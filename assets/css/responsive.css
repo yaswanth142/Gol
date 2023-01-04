@@ -1,0 +1,885 @@
+@media only screen and (min-width: 992px) and (max-width: 5000px) {
+    .team-sec .col-md-3.col-sm-6.col-xs-12:nth-child(4n+1) {
+        clear: both;
+    }
+        
+    }
+    
+    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .section-white {
+        background: #fff;
+        margin-top: -60px;
+    }
+    .formtop {
+        margin-top: 5px;
+    }
+    .greybg {
+        height: auto !important;
+        margin-top: -100px !important;
+    }
+    .offerhome {
+        padding-left: 7px;
+    }
+    .carousel-caption {
+        padding-bottom: 90px;
+    }
+    .offer-banner {
+        margin-top: 0px !important;
+    }
+    .navbar-inverse .navbar-nav > li > a {
+        font-size: 12px !important;
+    }
+    .nav > li > a {
+        padding: 10px 7px !important;
+    }
+    .carousel-caption {
+        right: 20%;
+        left: 20%;
+        padding-bottom: 30px !important;
+    }
+    .packgbg {
+        padding: 80px 10px !important;
+    }
+    .stars-line{
+        display: flex;
+        align-items: center;
+        position: relative;
+        text-align: center;
+        margin: 0 auto !important;
+        display: inline-flex !important;
+        position: relative;
+        /* width: 100%; */
+    }
+    .right-btn {
+        right: 10px !important;
+        margin-top: -275px  !important;
+    }
+    .left-btn {
+        left: 10px !important;
+        margin-top: -275px  !important;
+    }
+    .left-btns {
+        left: 10px !important;
+        margin-top: -275px  !important;
+    }
+    .right-btns {
+        right: 10px !important;
+        margin-top: -275px  !important;
+    }
+    .right-btndown {
+        right: 10px !important;
+        
+    }
+    .right-btn1 {
+        right: 10px !important;
+        margin-top: -225px  !important;
+    }
+    .left-btn1 {
+        left: 10px !important;
+        margin-top: -225px  !important;
+    }
+    .right-btndown {
+        right: 10px !important;
+        
+    }
+    .left-btndown {
+        right: 10px !important;
+        left: 15px !important;
+    }
+    
+    }
+    
+    @media only screen and (max-width: 800px) {
+        
+        /* Force table to not be like tables anymore */
+        #no-more-tables table, 
+        #no-more-tables thead, 
+        #no-more-tables tbody, 
+        #no-more-tables th, 
+        #no-more-tables td, 
+        #no-more-tables tr { 
+            display: block; 
+        }
+     
+        /* Hide table headers (but not display: none;, for accessibility) */
+        #no-more-tables thead tr { 
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+     
+        #no-more-tables tr { border: 1px solid #ccc; }
+     
+        #no-more-tables td { 
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee; 
+            position: relative;
+            padding-left: 50% !important; 
+            white-space: normal;
+            text-align:left;
+                font-size: 14px;
+        }
+     
+        #no-more-tables td:before { 
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%; 
+            padding-right: 10px; 
+            white-space: nowrap;
+            text-align:left;
+            font-weight: bold;
+        }
+     
+        /*
+        Label the data
+        */
+        #no-more-tables td:before { content: attr(data-title); }
+        .cf {
+        background: none;
+        color: #111;
+    }
+    .course-btn a {
+        margin-top: 10px;
+    }
+    }
+    
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .widget-icon-box-base{
+        margin-bottom: 40px;
+    }
+    .formtop {
+        margin-top: 15px !important;
+    }
+    .stars-line {
+        margin-left: 15px !important;
+    }
+    .offer-banner {
+        margin-top: 0px !important;
+    }
+    .navbar-inverse .navbar-nav > li > a {
+        font-size: 12px !important;
+    
+    }
+    .packgbg h2 {
+        margin-top: 140px;
+    
+    }
+    .gall-pdd {
+        margin: 10px 0 20px !important;
+    }
+    .greybg {
+        margin-top: -130px !important;
+    }
+    .carousel-caption h1 {
+        line-height: 1 !important;
+        font-size: 36px !important;
+    }
+    .menu-mt {
+        margin-top: 0px !important;
+    }
+    .image-3d-effect {
+        position: relative;
+        margin: 40px 0px 90px 0px;
+    }
+    .ngx-datepicker-container .ngx-datepicker-input {
+        width: 100% !important;
+        height: 55px!important;
+    }
+    .samimg img{
+        width: 100%;
+    }
+    .stars-line{
+        display: flex;
+        align-items: center;
+        position: relative;
+        text-align: center;
+        margin: 0 auto !important;
+        display: inline-flex !important;
+        position: relative;
+        /* width: 100%; */
+    }
+    .right-btn {
+        right: 10px !important;
+        margin-top: -275px  !important;
+    }
+    .left-btn {
+        left: 10px !important;
+        margin-top: -275px  !important;
+    }
+    .left-btns {
+        left: 10px !important;
+        margin-top: -275px  !important;
+    }
+    .right-btns {
+        right: 10px !important;
+        margin-top: -275px  !important;
+    }
+    .right-btndown {
+        right: 10px !important;
+        
+    }
+    .right-btn1 {
+        right: 10px !important;
+        margin-top: -225px  !important;
+    }
+    .left-btn1 {
+        left: 10px !important;
+        margin-top: -225px  !important;
+    }
+    .right-btndown {
+        right: 10px !important;
+        
+    }
+    .left-btndown {
+        right: 10px !important;
+        left: 15px !important;
+    }
+    .samimg {
+        margin-bottom: 20px !important;
+    
+    }
+    .packgbg {
+        padding: 0px 0px !important;
+    }
+    .sam-text {
+        padding-top: 20px;
+    }
+    .bg-isla {
+        margin: 20px 0 0px !important;
+    }
+    .offr {
+        margin-top: 0px;
+        padding: 30px 30px !important;
+    }
+    .pbtm{
+        margin-bottom: 30px !important;
+    }
+    .carousel-control.left {
+        display: none;
+    }
+    .carousel-control.right {
+        display: none;
+    }
+    .nav>li>a {
+        position: relative;
+        display: block;
+        padding: 10px 5px;
+    }
+    .carousel-caption {
+        right: 0% !important;
+        left: 0% !important;
+        padding-bottom: 0px !important;
+    }
+    .ship{
+        margin-bottom: 20px;
+    }
+    .section-white {
+        background: #fff;
+        margin-top: -50px;
+    }
+    .shortcode_title .title_primary {
+        font-size: 28px;
+    }
+    .gallerysecond{
+        padding-left: 15px;
+      }
+    }
+    
+    
+    @media only screen and (min-width: 0px) and (max-width: 767px) {
+        .alert-table h3 {
+            margin-top: 10px !important;
+            padding: 10px !important;
+            font-size: 14px !important;
+        }
+        .content p {
+            margin: 10px 15px !important; 
+            text-align: justify;
+        }
+        .facility {
+            width: 100% !important; 
+        }
+        .hiddenn{
+            display: block !important; 
+            margin-left: 25px;
+            font-size: 24px;
+          }
+          .bookhistory {
+            padding-left: 25px !important;
+        }
+        .travfont{
+            width: 90% !important; 
+              float: left !important; 
+          }
+          .slider-btn {
+
+            display: none;
+        }
+          .travicon{
+            width: 7% !important; 
+              float: left !important; 
+              margin-top: 5px;
+          }
+        .room_list_item .room_img {
+            height: 220px  !important; 
+        }
+        .my-account-top {
+            margin-top: 0px !important; 
+        }
+        .our-attraction {
+            margin-bottom: 0px !important; 
+        }
+        .greybknd {
+            min-height: 193px;
+        }
+        .galleryfirst {
+            padding-right: 0px !important; 
+            padding-left: 0px;
+        }
+        .box {
+            padding: 2% 0% 2% 2% !important; 
+        }
+        .alertsize {
+            width: 95% !important; 
+        }
+        .close-alert1 {
+            left: 0px !important;
+        }
+        .contact-from h1 {
+            padding-left: 10px !important;
+        }
+        .contact-from {
+            padding: 15px 5px 45px !important;
+
+        }
+        .gall-pdd {
+            margin: 0px 0 30px !important;
+        }
+        .book-tab {
+            width: 100px;
+            display: block;
+            text-align: center;
+        }
+        .content h5 {
+            margin: 10px 0px !important; 
+        }
+        .content ul {
+            margin: 10px 25px !important; 
+            padding-left: 0px !important; 
+            text-align: justify;
+        }
+        .wht-box p {
+            padding: 0 20px !important; 
+        }
+    .section-white {
+        margin-top: 30px;
+    }
+    .copy {      text-align: center; } 
+.footer_menu {     text-align: center !important;      }
+.wrapper-footer ul {  margin-right:0px !important; }  
+.island-preview .tab-content {        height: auto !important; } 
+.reserbg {       width: 95% !important;     margin: 10px 5px 10px 8px !important; } 
+.grand-total {    margin-bottom: 10px; } 
+.app-dwn{    margin-top: 20px;} 
+.cost {      margin-right: 5px !important;    } 
+
+    .zoom1 {
+        margin-top: 10px !important;
+    }
+    .rooms {
+        width: 92% !important;
+
+    }
+    .amenity ul li {
+        width: 100% !important;
+
+    }
+    .frmpd {
+        display: block  !important;
+    }
+    .bookedfnt1 {
+        font-size: 12px !important;
+        float: right !important;
+        margin-bottom: 5px !important;
+        margin-top: 7px !important;
+        position: relative;
+    }
+    .stat {
+        font-size: 14px !important;
+        float: left !important;
+    }
+    .island-preview h3 {
+        margin-bottom: 15px !important;
+        margin-top: 5px !important;
+    }
+    .wht-box {
+        margin: 10px 0 !important;
+    }
+    .abot-lesk {
+        margin-top: 20px !important;
+    }
+    .tppdng {
+        padding: 30px 0px 30px !important;
+    }
+    .termsplace {
+        margin-top: 30px !important;
+    }
+    .whtbox {
+        margin-left: 0px !important;
+    
+    }
+    .close {
+        color: #000 !important;
+        margin-top: -40px !important;
+    
+    }
+    .contact-section {
+        padding: 30px 0 30px !important;
+    }
+    .stars-line {
+        margin-left: 15px !important;
+    }
+    .offer-banner {
+        margin-top: 0px !important;
+    }
+    .packgbg h2 {
+        font-size: 20px !important;
+        margin-top: 10px !important;
+        margin-bottom: 5px !important;
+    }
+    .formtop {
+        margin-top: 10px !important;
+    }
+    .main_title h1{
+        margin-top: 10px !important;
+    }
+    .offr h1 span {
+        font-size: 22px !important;
+        display: inline !important;
+       
+    
+    }
+    .greybg {
+        padding-bottom: 0px;
+        padding-top: 0px;
+        margin-top: 0px !important;
+    }
+    .samimg img{
+        width: 100%;
+    }
+    .navbar-toggle {
+        margin-right: 30px !important;
+    
+    }
+    .rightarrowAttractions {
+        right: 0px !important;
+        top: 39% !important;
+    
+    }
+    .rightarrowstaying {
+        right: 0px !important;
+        top: 39% !important;
+    }
+    .leftarrow{
+        left: 7px !important; 
+        z-index: 1001;
+        top: 39% !important;
+    }
+    .leftarrow1 {
+        left: 0px !important; 
+        top: 25% !important;
+        z-index: 1004;
+    }
+    .rightarrow {
+        right: 0px !important; 
+        top: 39% !important;
+        z-index: 1004;
+    
+    }
+    .app-down-conte {
+        margin-top: 10px !important;
+        margin-left: 0px !important;
+    }
+    .kayking {
+        margin-top: 0px !important;
+        display: none;
+    }
+    .packgbg {
+        padding-bottom: 0px !important;
+        padding-top: 0px !important;
+    }
+    .image-3d-effect {
+        margin: 40px 0px 90px 0px;
+        display: none;
+    }
+    .pckgbtn1 {
+        height: 36px !important;
+        margin-bottom: 15px;
+    }
+    .ngx-datepicker-container .ngx-datepicker-input {
+        width: 100%;
+        margin: 10px 0px 0px 0px !important;
+    }
+    .ngx-datepicker-container .ngx-datepicker-input {  
+        width: 125px;  
+    }
+    div.waves {
+        display: none;
+    }
+    .down-app {
+        padding: 0px 0px 20px !important;
+    }
+    .attract-desc {
+        font-size: 14px !important;
+    }
+    .isla-pack {
+        padding-right: 0px  !important;
+        padding-left: 0px  !important;
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+        color: #fff;
+        border-bottom: 1px solid #2e97d6 ;
+        padding: 35px;
+        padding: 15px 25px !important;
+    }
+    .login-head .dropdown-menu>ul>li>a {
+        border-bottom: #fff;
+    }
+    .app-down-conte h2 {
+        font-size: 27px;
+        margin-bottom: 5px;
+    }
+    .paly-store img {
+        margin-top: 0px !important;
+        margin-left: 0px !important;
+    }
+    .slick-slider {
+        width: 100% !important;
+    }
+    .input-group {
+        width: 100% !important;
+        margin-bottom: 10px !important;
+    }
+    .ngx-datepicker-container .ngx-datepicker-input {
+        width: 100% !important;
+        height: 55px!important;
+    }
+    .offr {
+        margin-top: 0px;
+        padding: 10px 0px !important;
+    }
+    .glrybknd {
+        padding: 20px 0px 65px  !important;
+    }
+    .right-btn {
+        right: 10px !important;
+        margin-top: -275px  !important;
+    }
+    .left-btn {
+        left: 10px !important;
+        margin-top: -275px  !important;
+    }
+    .left-btns {
+        left: 10px !important;
+        margin-top: -275px  !important;
+    }
+    .right-btns {
+        right: 10px !important;
+        margin-top: -275px  !important;
+    }
+    .right-btndown {
+        right: 10px !important;
+        
+    }
+    .right-btn1 {
+        right: 10px !important;
+        margin-top: -225px  !important;
+    }
+    .left-btn1 {
+        left: 10px !important;
+        margin-top: -225px  !important;
+    }
+    .right-btndown {
+        right: 10px !important;
+        
+    }
+    .left-btndown {
+        right: 10px !important;
+        left: 15px !important;
+    }
+    .pckgbtn {
+        width: 100%;
+    }
+    .stars-line{
+        display: flex;
+        align-items: center;
+        position: relative;
+        text-align: center;
+        margin: 0 auto !important;
+        display: inline-flex !important;
+        position: relative;
+        /* width: 100%; */
+    }
+    .samimg{
+        margin-bottom: 20px !important;
+        padding-right: 15px !important;
+    }
+    .navbar-toggle {
+        cursor: pointer;
+    }
+    .pbtm{
+        margin-bottom: 30px !important;
+    }
+    .login-head {
+        text-align: left !important;
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 10px;
+        width: 100%;
+        background: #24b7a9;
+    }
+    .nav>li:last-child{
+        border: 0px !important;
+       
+    }
+    .login-head li a{
+        background: none !important;
+    }
+    .carousel-caption {
+        padding-bottom: 10px !important;
+    }
+    .lognpdng {
+        margin-top: -38px !important;
+        right: 80px !important;
+    }
+    .navbar-nav > li > a {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+    }
+    .carousel-control{
+        display: none;
+    }
+    .sam-text {
+    
+        text-align: left !important;
+        padding-top: 25px;
+        padding-bottom: 15px !important;
+    }
+    .bigbox p {
+        text-align: center;
+        color: #000;
+        padding-bottom: 10px !important;
+    
+    }
+    .carousel-caption h1 {
+        font-size: 24px !important;
+        margin-top: 10px;
+        display: none;
+    }
+    .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+        background: #1979b3;
+        border: 0px !important;
+        }
+    .navbar-inverse .navbar-toggle {
+        border-color: 
+        #fff;
+    }
+
+    .navbar-toggle {
+        margin-top: 45px;
+    }
+    .tours-type-slider .tours_type_item .tours-type__item__image {
+        width: 220px;
+    }
+    .tours-type-slider .tours_type_item {
+        padding: 0 80px;
+    }
+    .tours-type-slider .tours_type_item .content-item {
+        width: 380px;
+    }
+    .ship{
+        margin-bottom: 20px;
+    }
+    
+  
+    .faq-data {
+        display: block !important;
+    }
+    .faq-content {
+        padding: 25px 0 0 0px !important;
+        min-height: 100% !important;
+    }
+    .menu-mt {
+        margin-top:0px !important;
+    }
+    .nav>li {
+        position: relative;
+        display: block;
+        border-bottom: 1px solid #2e97d6 !important;
+        padding: 10px !important;
+    }
+    .caret {
+        display: inline-block;
+        width: 0;
+        float: right;
+        margin-top: 8px;
+        /* font-size: 55px; */
+        height: 0;
+        margin-left: 2px;
+        vertical-align: middle;
+        border-top: 5px dashed;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+    }
+    .navbar-inverse .navbar-nav>li>a:hover {
+        color: #ffffff !important;
+    }
+    .dropdown-menu .nav>li{
+        padding: 0px !important;
+    }
+    ul.nav li.dropdown:hover ul.dropdown-menu {
+        display: block;
+        visibility: hidden;
+        background: none !important;
+        opacity: 1;
+        z-index: -1 !important;
+        transform: translateY(0%) !important;
+        transition-delay: 0s, 0s, 0.3s !important;
+        -webkit-transform: translateY(0%) !important;
+        -moz-transform: translateY(0%) !important;
+        -ms-transform: translateY(0%) !important;
+        -o-transform: translateY(0%) !important;
+    }
+}
+    @media only screen and (min-width: 0px) and (max-width: 640px) {
+    .section-white {
+        margin-top: 90px;
+    }
+    
+    }
+    
+    @media only screen and (min-width: 515px) and (max-width: 767px) {
+    
+    
+    }
+    
+    
+    @media only screen and (min-width: 0px) and (max-width: 492px) {
+    
+    }
+    
+    @media only screen and (min-width: 0px) and (max-width: 420px) {
+    
+    
+    }
+    
+    @media only screen and (min-width: 0px) and (max-width: 550px) {
+    .section-white {
+        margin-top: 90px;
+    }
+    
+    }
+    
+    @media only screen and (min-width: 0px) and (max-width: 500px) {
+        .wrapper-footer ul li {
+            padding-right: 1px;
+            margin-left: 0px;
+        }
+        .carousel-caption {
+            display: block;
+        }
+        .bok-de1 {
+            padding: 10px 30px;
+            margin-left: -25px;
+            margin-bottom: 10px;
+        }
+        .pay-fil {
+            display: block !important;
+            float: none !important;
+        }
+        .offr {
+            margin-top: 0px;
+        }
+        .discoverbg {
+            padding: 0px 0px !important;
+        }
+        .gft {
+            padding: 0px 10px !important;
+        }
+        .clintbg{
+            padding: 10px 0px !important; 
+        }
+        .bigboxx {
+            padding: 20px 15px 20px 15px !important; 
+        }
+        .bg-isla{
+            margin: 20px 0px !important; 
+        }
+        .app-img{
+            display: none;
+        }
+        .our-attraction h2 {
+            font-size: 27px !important; 
+            margin-top: 10px !important; 
+        
+        }
+        .att-detail {
+            height: auto !important;
+        }
+        .gallerysecond {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        
+        }
+        .login-page {
+    
+            width: 330px !important;
+            padding: 30% 0 0 !important;
+    }
+    .login-logo {
+        width: 330px !important;
+    }
+    .login-page1{
+        width: 100% !important;
+        margin-top: 100px !important;
+    }
+    .login-logo1{
+        width: 100% !important;
+       
+    }
+    .hist-book .nav-stacked>li {
+        width: 100% !important;
+        margin-bottom: 5px !important;
+    }
+    .cardp {
+        float: none !important;
+        margin-bottom: 0px !important;
+    }
+    .card-icons {
+        display: block !important;
+    }
+    .rate {
+        float: none !important;
+    }
+    .room_list_item .room_price_box {
+        margin-bottom: 30px;
+    }
+    .attr-img {
+        width: 100% !important;
+        height: auto !important;
+    }
+    
+    }
+    
+    @media only screen and (min-width: 0px) and (max-width: 390px) {
+    
+    
+    }
+    @media only screen and (min-width: 0px) and (max-width: 359px) {
+    
+    
+    }
