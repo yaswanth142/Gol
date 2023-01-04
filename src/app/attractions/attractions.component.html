@@ -1,0 +1,137 @@
+<div id="myCarousel" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="../assets/images/islands.jpg" class="img-responsive">
+                <div class="container">
+                    <div class="carousel-caption carousel-captionn">
+                        <h1>Attractions</h1>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    
+        <div class="clearfix"></div><br><br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="preview island-preview">
+                        <h3>{{activityName}}</h3>
+                        <div class="preview-pic tab-content">
+                            <div class="tab-pane active" id="pic-1"> 
+                                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner" role="listbox">
+                                                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+                                                    <div ngxSlickItem *ngFor="let img of activityImg;let j=index;" class="slide">
+                                                        <img class="img-responsive img-rounded" src="{{activityPath}}{{img}}">
+                                                    </div>
+                                                </ngx-slick-carousel>
+                                            </div>
+                                        </div>
+                                <!-- <img class="img-responsive img-rounded" src="{{islandPath}}{{islandImg}}"> -->
+                            </div>
+                            
+                        </div>
+                        <hr class="hr-br">
+                        <div class="island-preview-content">
+                            <p style="text-align:justify;">
+                               <span [innerHTML]=activityDesc></span>
+                            </p>
+                        </div>
+    
+                    </div>
+                    <!-- <section class="room_list_area">
+                        <div *ngIf="packages?.length || isProperty" class="">
+                            <div class="row room_list_inner" *ngFor="let item of packages; let i=index;">
+                                <div class="room_list_item">
+                                    <div class="col-md-4">
+                                        <a class="room_img">
+                                               
+                                           
+                                            <img src="{{property_thump}}{{item.pkg_img_url[0]}}">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="room_list_l_text">
+                                                    <a>
+                                                        <h4>{{item.pkg_name}}</h4>
+                                                    </a>
+    
+                                                    <p>{{item.pkg_desc | slice:0:80}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="room_price_box">
+    
+                                                    <a class="book_now_btn"  href="#/package/{{item.pkg_id}}">Plan Now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="isProperty" class="row room_list_inner">
+                                <div class="room_list_item">
+                                    <div class="col-md-4">
+                                        <a class="room_img">
+                                            <img src="../assets/images/gal_6.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="room_list_l_text">
+                                                    <a>
+                                                        <h4>Island Stays</h4>
+                                                    </a>
+    
+                                                    <p>Pick an exotic coral island of your choice and explore these unique Island Stay experiences. </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="room_price_box">
+    
+                                                    <a class="book_now_btn" href="#/islandProperty/{{id}}">Plan Now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="!packages?.length && !isProperty" class="grand-total">
+                                <span>Packages and Properties are not available in this Island</span>
+                            </div>
+                    </section> -->
+                </div>
+    
+                <div  class="col-md-4">
+                    <!-- <div *ngIf="activities?.length">
+                    <h3 class="title-atrr">Attractions</h3>
+                    <div class="our-attractions" *ngFor="let act of activities; let j=index;">
+                        <div class="attr-img">
+                            
+                            <img src="{{activityPath}}{{act.activity_img_url}}">
+                        </div>
+                        <div class="attr-cont">
+                            <h4>{{act.activity_name}}</h4>
+                            <p> {{act.desc | slice:0:63}}...<a (click)="knowMore(act)">Know More</a>
+    
+                            </p>
+                        </div>
+                    </div>
+                   
+                    <hr class="hr-br">
+                </div> -->
+                    <div class="app-dwn">
+                        <a href=" https://play.google.com/store/apps/details?id=com.golak&hl=en" target="_blank"> <img src="../../../assets/images/app-down.jpg"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="clearfix"></div><br><br>
+    
+    </div>

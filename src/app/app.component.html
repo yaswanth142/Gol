@@ -1,0 +1,600 @@
+<app-sticky-header *ngIf="variable.isHeader">
+  <div class="navbar-wrapper">
+
+    <div class="section tp">
+      <div class="navbar  navbar-inverse navbar-static-top">
+
+        <div class="container">
+          <div class="navbar-header">
+            <a id="hamSet" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+              <div class='box-wave'>
+              <div class='wave -one'></div>
+              <div class='wave -two'></div>
+              <div class='wave -three'></div>
+              <div class='title'> <a class="navbar-brand" (click)="goHome()"  class="img-logo">
+                  <img src="../../assets/images/gol-logo.png"> </a> </div> </div> </div> <div id="setMenu"
+                    class="navbar-collapse collapse navbar-right menu-mt">
+                  <ul class="nav navbar-nav">
+                    <li *ngIf="!variable.isLogin"><a (click)="findreservations()" class="hidden-xs">FIND
+                        RESERVATIONS</a>
+                      <a (click)="findreservations()" class="visible-xs" data-toggle="collapse"
+                        data-target=".navbar-collapse">FIND RESERVATIONS</a>
+                    </li>
+                    <li *ngIf="variable.isLogin"><a (click)="bookingHistory()" class="hidden-xs">MY BOOKINGS</a>
+                      <a (click)="bookingHistory()" class="visible-xs" data-toggle="collapse"
+                        data-target=".navbar-collapse">MY
+                        BOOKINGS</a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle hidden-xs" data-toggle="dropdown" role="button"
+                        aria-haspopup="true" aria-expanded="false">PACKAGE <span class="caret"></span>
+                      </a>
+                      <a href="#" class="dropdown-toggle visible-xs" data-toggle="dropdown" role="button"
+                        aria-haspopup="true" aria-expanded="false">PACKAGE <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li *ngFor="let package of packageData">
+                          <a (click)="packageidfetch(package.pkg_id)" class="hidden-xs">{{package.pkg_name}}</a>
+                          <a (click)="packageidfetch(package.pkg_id)" class="visible-xs" data-toggle="collapse"
+                            data-target=".navbar-collapse">{{package.pkg_name}}</a>
+                        </li>
+
+                      </ul>
+
+                    </li>
+                    <li><a (click)="islandStay()" class="hidden-xs">ISLAND STAYS</a>
+                      <a (click)="islandStay()" class="visible-xs" data-toggle="collapse"
+                        data-target=".navbar-collapse">ISLAND
+                        STAYS</a></li>
+                    <!-- <li><a href="#/about">ABOUT US</a></li> -->
+                    <li><a (click)="adoutLak()" class="hidden-xs">ABOUT LAKSHADWEEP</a>
+                      <a (click)="adoutLak()" class="visible-xs" data-toggle="collapse"
+                        data-target=".navbar-collapse">ABOUT LAKSHADWEEP</a></li>
+
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                        aria-haspopup="true" aria-expanded="false">HELP <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a (click)="about()" class="hidden-xs">About Us</a>
+                          <a (click)="about()" class="visible-xs" data-toggle="collapse"
+                            data-target=".navbar-collapse">About Us</a>
+                        </li>
+                        <li>
+                          <a (click)="contact()" class="hidden-xs">Contact Us</a>
+                          <a (click)="contact()" class="visible-xs" data-toggle="collapse"
+                            data-target=".navbar-collapse">Contact Us</a>
+                        </li>
+                        <li>
+                          <a (click)="faq()" class="hidden-xs">Policies & FAQ</a>
+                          <a (click)="faq()" class="visible-xs" data-toggle="collapse"
+                            data-target=".navbar-collapse">Policies & FAQ</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li *ngIf="!variable.isLogin" class="login-head">
+
+
+                      <span><a (click)="signin()" data-toggle="modal" data-target="#exampleModalCenter"
+                          style="color:#fff; cursor: pointer;"><i class="fa fa-user"></i>&nbsp;Login</a></span> <span> /
+                      </span>
+                      <span><a (click)="signup()" data-toggle="modal" data-target="#exampleModalCenter"
+                          style="color:#fff; cursor: pointer;">Signup</a></span>
+
+                    </li>
+                    <li *ngIf="variable.isLogin" class="login-head user-name-log">
+
+                      <!-- <div> -->
+                      <a>
+                    <li class="dropdown " style="list-style-type: none; ">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false" style="color: #fff;">{{variable.username | slice:0:12 }}
+                        <span class="caret"></span></a>
+                      <ul class="dropdown-menu dropmenu">
+                        <li><a (click)="profileupdate()" class="hidden-xs">My Account</a></li>
+                        <li><a (click)="changepassword()" class="hidden-xs">Change Password</a></li>
+                        <li><a (click)="logout()" class="hidden-xs">Logout</a></li>
+
+                        <li><a (click)="profileupdate()" class="visible-xs" data-toggle="collapse"
+                            data-target=".navbar-collapse">My Account</a></li>
+                        <li><a (click)="changepassword()" class="visible-xs" data-toggle="collapse"
+                            data-target=".navbar-collapse">Change Password</a></li>
+                        <li><a (click)="logout()" class="visible-xs" data-toggle="collapse"
+                            data-target=".navbar-collapse">Logout</a>
+                        </li>
+                      </ul>
+                    </li>
+                </a>
+
+                <!-- </div> -->
+                </li>
+
+                </ul>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+</app-sticky-header>
+<router-outlet></router-outlet>
+<div *ngIf="variable.isHeader">
+
+  <section class="down-app">
+    <div class="tutorial-link">
+
+    </div>
+    <div class="waves">
+      <svg width="100%" height="350px" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00B4DB" />
+          <stop offset="50%" stop-color="#224488" />
+          <stop offset="100%" stop-color="#0083B0" />
+        </linearGradient>
+        <path fill="url(#grad1)" d="
+                  M0 67
+                  C 273,183
+                    822,-40
+                    1920.00,106 
+                  
+                  V 359 
+                  H 0 
+                  V 67
+                  Z">
+          <animate repeatCount="indefinite" fill="url(#grad1)" attributeName="d" dur="15s" attributeType="XML" values="
+                    M0 77 
+                    C 473,283
+                      822,-40
+                      1920,116 
+                    
+                    V 359 
+                    H 0 
+                    V 67 
+                    Z; 
+        
+                    M0 77 
+                    C 473,-40
+                      1222,283
+                      1920,136 
+                    
+                    V 359 
+                    H 0 
+                    V 67 
+                    Z; 
+        
+                    M0 77 
+                    C 973,260
+                      1722,-53
+                      1920,120 
+                    
+                    V 359 
+                    H 0 
+                    V 67 
+                    Z; 
+        
+                    M0 77 
+                    C 473,283
+                      822,-40
+                      1920,116 
+                    
+                    V 359 
+                    H 0 
+                    V 67 
+                    Z
+                    ">
+          </animate>
+        </path>
+      </svg>
+
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <div class="app-img">
+            <img src="../../assets/images/app.png">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="app-down-conte">
+            <h2>Download Our App</h2>
+            <p>The best travel in the world</p>
+          </div>
+          <div class="paly-store">
+            <a href=" https://play.google.com/store/apps/details?id=com.golak&hl=en" target="_blank">
+              <img src="../../assets/images/play_store.png">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-5 col-sm-5 col-xs-12">
+          <div class="kayking">
+            <img src="../../assets/images/kayak_PNG102.png">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="wrapper-footer wrapper-footer-newsletter">
+    <div class="main-top-footer">
+      <div class="container">
+        <div class="row">
+          <aside class="col-sm-5 widget_text">
+            <div class="widget-logo">
+              <a (click)="goHome()">
+                <img src="../assets/images/gol-logo-white.png">
+              </a>
+
+            </div>
+            <div class="textwidget">
+              <div class="footer-info">
+                <p style="text-align:justify;">GoL (Go Lakshadweep) Travels Private Limited, a Government Authorized
+                  Travel Agent (ATA) is a Private Limited Company registered at Thoppumpady, Kochi, Kerala and a major
+                  travel tour provider for Lakshadweep. Gol is a digital platform to connect tourists with
+                  holiday...<br>
+                  <a (click)="about()">View More</a>
+
+                </p>
+              </div>
+            </div>
+          </aside>
+          <aside class="col-sm-3 widget_text">
+            <h3 class="widget-title">INFORMATION</h3>
+            <div class="textwidget">
+              <ul class="menu list-arrow">
+                <li *ngIf="!variable.isLogin"><i class="fa fa-chevron-right" aria-hidden="true"></i><a
+                    (click)="findreservations()">Find Reservations</a></li>
+                <li *ngIf="variable.isLogin"><i class="fa fa-chevron-right" aria-hidden="true"></i><a
+                    (click)="bookingHistory()">My Bookings</a></li>
+                <li><i class="fa fa-chevron-right" aria-hidden="true"></i><a (click)="about()">About Us</a></li>
+                <li><i class="fa fa-chevron-right" aria-hidden="true"></i><a (click)="faq()">FAQ</a></li>
+                <li><i class="fa fa-chevron-right" aria-hidden="true"></i><a (click)="contact()">Contact Us</a></li>
+                <li><i class="fa fa-chevron-right" aria-hidden="true"></i><a (click)="policy()">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </aside>
+
+          <aside class="col-sm-4 widget_text">
+            <h3 class="widget-title">CONTACT</h3>
+            <div class="textwidget">
+              <div class="footer-info">
+                <ul class="contact-info">
+                  <li><i class="fa fa-map-marker fa-fw"></i> GoL Travels Private Limited, Pallichal Road, Pyarry Jn., Thoppumpady, Cochin – 682 005, Kerala, India.</li>
+                  <li><i class="fa fa-phone fa-fw"></i> 0484 2959023, +91 97785 09629, +91 97783 89592</li>
+                  <li>
+                    <i class="fa fa-envelope fa-fw"></i><a href="mailto:info@golakshadweep.com">
+                      info@golakshadweep.com</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+    <div class="container wrapper-copyright">
+      <div class="row">
+        <div class="col-sm-6">
+          <div>
+            <p class="copy">Copyright © 2019 GoL Travels Private Limited. All Rights Reserved.</p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <aside id="text-5" class="widget_text">
+            <div class="textwidget">
+              <ul class="footer_menu">
+                <li><a (click)="terms()">Terms & Conditions</a></li>
+                <li>|</li>
+                <li><a (click)="policy()">Privacy Policy</a></li>
+
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <!-- LOGIN -->
+    <div *ngIf="variable.isSignin==1">
+      <section class="bg">
+        <div class="login-page">
+
+          <div class="login-logo">
+            <h2>LOGIN</h2>
+            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <!-- <img src="../assets/images/home_7/Logo1.png"> -->
+          </div>
+          <div class="form">
+            <form class="login-form" id="login" name="logindata" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <label>Registered Email<strong style="color:red;">*</strong></label>
+              <input formControlName="email" type="text" name="email" class="form-control"
+                placeholder="Registered Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Enter a valid Email</div>
+              </div>
+
+              <label>Password<strong style="color:red;">*</strong></label>
+              <input [type]="show ? 'text' : 'password'" maxlength="300" class="form-control" formControlName="password"
+                placeholder="Password" name="password" />
+              <span *ngIf="!show"><a (click)="passwordToggle()"><i class="fa fa-eye passEye"
+                    aria-hidden="true"></i></a></span>
+              <span *ngIf="show"><a (click)="passwordToggle()"><i class="fa fa-eye-slash passEye"
+                    aria-hidden="true"></i></a></span>
+              <!-- <button (click)="passwordToggle()">Show</button> -->
+
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+              </div>
+
+
+
+
+              <button type="submit" class=" btn1">Login</button>
+              <!-- <button type="submit">login</button> -->
+              <div class="pull-right forgot"><a (click)="forgot()" style="cursor: pointer">Forgot Password?</a></div>
+              <div class="clearfix"></div>
+              <div class="social-cont">
+                <p>or using social media</p>
+              </div>
+              <div class="social-login">
+                <a (click)="signInWithFB()" class="btn btn-face">Facebook</a>
+                <a (click)="signInWithGoogle()" class="btn btn-goog">Google</a>
+              </div>
+              <div>
+                <p class="message">Not registered? <a (click)="signup()" style="cursor: pointer">Create an account</a>
+                </p>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </section>>
+    </div>
+
+    <!-- REGISTER -->
+    <div *ngIf="variable.isSignin==2">
+      <section class="bg1 signupmodal">
+
+        <div class="login-page1">
+          <div class="login-logo1">
+            <h2>Sign up Here</h2>
+
+            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+          </div>
+          <div class="form1 ">
+            <form id="register" [formGroup]="registerForm" (ngSubmit)="regSubmit()">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>First Name<strong style="color:red;">*</strong></label>
+                  <input type="text" formControlName="firstName" pattern="[a-zA-Z]+" name="firstName" class="span3"
+                    placeholder="First Name" maxlength="50">
+                  <div *ngIf="isSubmitted && g.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="g.firstName.errors.required">First Name is required</div>
+                    <div *ngIf="g.firstName.errors.pattern">Enter only alphabets</div>
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+                  <label>Last Name<strong style="color:red;">*</strong></label>
+                  <input type="text" formControlName="lastName" pattern="[a-zA-Z]+" name="lastName" type="text"
+                    class="span3" placeholder="Last Name" maxlength="50">
+                  <div *ngIf="isSubmitted && g.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="g.lastName.errors.required">Last Name is required</div>
+                    <div *ngIf="g.lastName.errors.pattern">Enter only alphabets</div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Email<strong style="color:red;">*</strong></label>
+                  <input type="text" formControlName="email1" placeholder="Email" name="email" class="span3">
+
+
+                  <div *ngIf="isSubmitted && g.email1.errors" class="invalid-feedback">
+                    <div *ngIf="g.email1.errors.required">Email is required</div>
+                    <div *ngIf="g.email1.errors.email">Enter a valid email</div>
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+                  <label>Mobile<strong style="color:red;">*</strong></label>
+                  <input type="text" name="phone" formControlName="phone"
+                    pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9,11}$" placeholder="Mobile" class="span3">
+                  <div *ngIf="isSubmitted && g.phone.errors" class="invalid-feedback">
+                    <div *ngIf="g.phone.errors.required">Mobile Number is required</div>
+                    <div *ngIf="g.phone.errors.pattern">Enter a valid mobile number</div>
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Date of Birth<strong style="color:red;">*</strong></label>
+                  <input class="form-control" style="float:none" placeholder="dd/mm/yyyy" ngx-mydatepicker name="myDate"
+                    formControlName="dob" [options]="myOptions" #dp="ngx-mydatepicker" />
+
+                  <span class="input-group-btn datepicker2">
+                    <button type="button" id="dob" class="btn " (click)="clearDate()">
+                      <i class="fa fa-remove clear" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" id="dob1" class="btn " (click)="dp.toggleCalendar()">
+                      <i class="fa fa-calendar cal" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                  <div *ngIf="isSubmitted && g.dob.errors" class="invalid-feedback">
+                    <div *ngIf="g.dob.errors.required &&!g.dob.errors.invalidDateFormat">Date of Birth is required
+                    </div>
+
+                    <div *ngIf="g.dob.errors.invalidDateFormat">Enter a valid Date of Birth
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label>Nationality<strong style="color:red;">*</strong></label>
+                  <ng-select formControlName="nationality" [items]="Ndata" bindLabel="nationality"
+                    bindValue="nationality" class="log" placeholder="Select Nationality"></ng-select>
+
+                  <div *ngIf="isSubmitted && g.nationality.errors" class="invalid-feedback">
+                    <div *ngIf="g.nationality.errors.required">Nationality is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Password<strong style="color:red;">*</strong></label> &nbsp;<i
+                    style="color: #C21F39;font-size: small;" [tooltip]="myTooltip" class="fa fa-info-circle"
+                    aria-hidden="true"></i>
+                  <input maxlength="200" formControlName="password1" type="password" name="password"
+                    placeholder="Password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$"
+                    class="span3">
+
+                  <div *ngIf="isSubmitted && g.password1.errors" class="invalid-feedback">
+                    <div *ngIf="g.password1.errors.required">Password is required</div>
+                    <div *ngIf="g.password1.errors.pattern"> Password (UpperCase, LowerCase, Number,SpecialChar, min 8
+                      Chars and max 20 Chars)</div>
+                  </div>
+                  <tooltip-content #myTooltip [animation]="true" placement="left">
+
+                    <span style="text-align: left;">1) Atleast one UpperCase character<br>
+                      2) Atleast one LowerCase character<br>
+                      3) Atleast one Number<br>
+                      4)Atleast one SpecialCharacter<br>
+                      5) min 8 Chars and max 20 Characters.
+                    </span>
+                  </tooltip-content>
+
+
+
+
+
+                </div>
+                <div class="col-md-6">
+                  <label>Confirm Password<strong style="color:red;">*</strong></label>
+                  <input maxlength="200" formControlName="confirmPassword" type="password" name="confirmPassword"
+                    placeholder="Confirm Password" class="span3">
+
+                  <div *ngIf="isSubmitted && g.confirmPassword.errors" class="invalid-feedback">
+                    <div *ngIf="g.confirmPassword.errors.required">Confirm Password is required</div>
+                    <div *ngIf="g.confirmPassword.errors.mustMatch">Passwords must match</div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="clearfix"></div>
+              <!-- <br clear="all"> -->
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <button type="submit" class="btn1">Sign Up</button>
+                </div>
+              </div>
+            </form>
+            <!-- <div class="">
+              <div class="social-cont-signup">
+                <p>or using social media</p>
+              </div>
+              <div class="social-login-signup">
+                <a type="button" (click)="signInWithFB()" class="btn btn-face">Facebook</a>
+                <a type="button" (click)="signInWithGoogle()" class="btn btn-goog">Google</a>
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+
+      </section>
+
+
+    </div>
+    <!-- FORGOT PASSWORD -->
+    <div *ngIf="variable.isSignin==3">
+
+      <body class="bg1 signupmodal">
+        <div class="login-page1">
+          <div class="login-logo1">
+            <h2>Forgot Password</h2>
+            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="form1">
+            <form class="login-form" [formGroup]="forgotForm" (ngSubmit)="forgotSubmit()">
+              <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                  <label>Registered Email<strong style="color:red;">*</strong></label>
+                  <input type="email" name="email2" formControlName="email2" class="span3"
+                    placeholder="Enter registered email">
+
+                  <div *ngIf="isSubmit && h.email2.errors" class="invalid-feedback">
+                    <div *ngIf="h.email2.errors.required">Email is required</div>
+                    <div *ngIf="h.email2.errors.email">Enter a valid email</div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="clearfix"></div><br clear="all">
+
+              <div class="row">
+                <div class="col-md-offset-4 col-md-4">
+                  <button class="btn1">
+                    Send
+                  </button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+      </body>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade " id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered bg-whites alertsize" role="document">
+    <div>
+      <button type="button" class="close close-alert1" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <section class="bg">
+        <div class="alert-img">
+          <img src="../assets/images/startup.svg">
+        </div>
+        <div class="alert-content">
+          <p style="word-wrap: break-word;">{{variable.alertMsg}}</p>
+        </div>
+      </section>
+    </div>
+
+
+
+  </div>
+</div>
+
+
+<ng4-loading-spinner [timeout]="1000000" [loadingText]="'Please wait...'"></ng4-loading-spinner>

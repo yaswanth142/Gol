@@ -1,0 +1,104 @@
+@import "./../assets/css/login.css";
+
+.invalid-feedback{
+    color: rgb(230, 14, 14);  
+    font-size: small;  
+    margin-top: -15px;     
+    margin-bottom: 5px; 
+}
+.ng-select .is-invalid {
+
+    border-color: rgb(216, 12, 12);
+}
+
+/* .clear{
+    height: 43px;
+}
+.cal{
+    height: 43px;
+    border-bottom-right-radius: 14px;
+    border-top-right-radius: 14px;
+} */
+.btn-default{
+    color: #ededed !important;
+    border-color: #ededed !important;
+}
+.datepicker2{
+    position: absolute;
+    right: 89px;
+    top: 30px;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    /* text-align: center;
+    font-size: 40px;
+    line-height: 108px; */
+    height: 108px;
+    /* background: #335C7D; */
+    color: #fff;
+    font-family: 'PT Sans', sans-serif;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    z-index: 1200;
+}
+
+header.sticky {
+    /* font-size: 24px;
+    line-height: 48px; */
+    height: 80px;
+    background: #000;
+    text-align: left;
+    padding-left: 20px;
+}
+header.sticky .navbar-static-top {
+    z-index: 1000;
+    border-width: 0 0 1px;
+    position: fixed;
+    width: 100%;
+    background-color: #fff !important;
+    border: 0px !important;
+    /* display: none; */
+}
+
+
+
+ :host {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      app-sticky-header {
+        position: fixed;
+        width: 100%;
+        /* text-align: center;
+        font-size: 40px;
+        line-height: 108px; */
+        height: 80px;
+        /* background: #335C7D; */
+        color: #fff;
+        font-family: 'PT Sans', sans-serif;
+        -webkit-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        z-index: 1200;
+      }
+
+      .content {
+        padding-top: 75px;
+      }
+
+      .page {
+        height: 50vh;
+      }
+
+      .page:nth-child(odd) {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      .page:nth-child(even) {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      .dark{
+        background-color: rgba(0, 0, 0, 0.51) !important;
+      }

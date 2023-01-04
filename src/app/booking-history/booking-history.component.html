@@ -1,0 +1,268 @@
+<div id="">
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../assets/images/innerpagee.jpg" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption carousel-captionn">
+          <h1>My Bookings</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="clearfix"></div><br><br>
+
+
+  <div class="container mb-bottom hist-book">
+
+    <ul class="nav nav-pills nav-stacked">
+      <li class="active " (click)="selectTab(1)"><a data-toggle="pill" [ngClass]="{active: activeTab(1)} "
+          class="sidenav">Ongoing</a></li>
+      <li (click)="selectTab(2)"><a data-toggle="pill" [ngClass]="{active: activeTab(2)} " class="sidenav ">Completed
+        </a></li>
+      <li (click)="selectTab(3)"><a data-toggle="pill" [ngClass]="{active: activeTab(3)} " class="sidenav ">Cancelled
+        </a></li>
+    </ul>
+    <!-- tab content -->
+  </div>
+  <div class="container">
+    <div class="row">
+      <h1 class="hiddenn">My Bookings</h1>
+    </div>
+    <div class="row">
+      <div class="tab-content ">
+        <div class="tab-pane active" *ngIf="tab === 1 && !NoActive">
+          <div *ngFor="let data of activeData" class="col-md-4">
+
+
+            <div class="card">
+              <a (click)="historyDetails(data.booking_id)">
+                <div class="card-img">
+
+                  <img class="img-responsive" src={{data.property_img_url}}>
+                  <div class="travel-date">
+                    <div class="list-inlines">
+                      <span><a> <i class="fa fa-calendar"></i> {{data.journey_start_date | date:'dd MMM yyyy'}} to
+                          {{data.journey_end_date | date:'dd MMM yyyy'}}</a></span>
+                    </div>
+                  </div>
+
+                </div>
+              </a>
+              <div class="card-block">
+                <div class="card-title">
+                  <h4><a (click)="historyDetails(data.booking_id)" title="view more">{{data.property_name}}</a> </h4>
+
+                </div><br>
+                <div class="clearfix"> </div>
+                <div class="clearfix"></div>
+                <div class="card-text">
+                  <p class="cardp"><b>Booking ID :</b> {{data.booking_ref_id}}</p>
+                  <div class="clearfix"></div>
+                  <p class="cardp"><b>Booking Date :</b> {{data.booked_date | date:'dd MMM yyyy'}}</p>
+                </div>
+
+                <div class="card-text">
+                  <p class="cardp"><b>Booking Status :</b> {{data.booking_status}}</p>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="card-text" [ngSwitch]="data.entry_permit_status">
+                  <p class="cardp" *ngSwitchCase="'Accept'" class="cardp"><b>Travel Status : </b>Accepted</p>
+                  <p class="cardp" *ngSwitchCase="'Reject'" class="cardp"><b>Travel Status : </b>Rejected</p>
+                  <p class="cardp" *ngSwitchDefault class="cardp"><b>Travel Status : </b>{{data.entry_permit_status}}
+                  </p>
+                </div>
+                <div class="clearfix"> </div>
+                <hr>
+                <div class="card-footer">
+                  <div class="card-icons">
+                     <span class="rate">₹ {{data.total_amount}}</span>
+                    <div>
+                      <span *ngIf="data.partially_paid"><button (click)="payment(data.booking_id,data.is_package)"
+                          class="btn btn-primary">&nbsp;Pay Now</button></span>
+                    </div>
+                    <button *ngIf="data.booking_status!='pending' && data.isCancel" (click)="cancelBooking(data.booking_id)"
+                      class="btn btn-danger"><i class="fa fa-close"
+                        style="color: white !important;"></i>&nbsp;Cancel</button>
+                  </div>
+                 </div>
+              </div>
+            </div>
+           </div>
+         </div>
+        <div class="tab-pane active" *ngIf="tab === 1 && NoActive">
+          <p class="bookhistory">No Ongoing Bookings are available</p>
+
+
+
+        </div>
+        <div class="tab-pane active" *ngIf="tab === 2 && !NoPassive">
+          <div *ngFor="let data of passiveData" class="col-md-4">
+
+
+            <div class="card">
+              <a (click)="historyDetails(data.booking_id)">
+                <div class="card-img">
+                  <img class="img-responsive" src={{data.property_img_url}}>
+                  <div class="travel-date">
+                    <div class="list-inlines">
+                      <span><a> <i class="fa fa-calendar"></i> {{data.journey_start_date | date:'dd MMM yyyy'}} to
+                          {{data.journey_end_date | date:'dd MMM yyyy'}}</a></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <div class="card-block">
+                <div class="card-title">
+                  <h4><a (click)="historyDetails(data.booking_id)" title="view more">{{data.property_name}}</a> </h4>
+
+                </div><br>
+                <div class="clearfix"> </div>
+                <div class="clearfix"></div>
+                <div class="card-text">
+                  <p class="cardp"><b>Booking ID :</b> {{data.booking_ref_id}}</p>
+                  <div class="clearfix"></div>
+                  <p class="cardp"><b>Booking Date :</b> {{data.booked_date | date:'dd MMM yyyy'}}</p>
+                </div>
+
+                <div class="clearfix"> </div>
+
+                <hr>
+                <div class="card-footer book-completed">
+                  <div class="card-icons">
+
+                    <span class="rate">₹ {{data.total_amount}}</span>
+                  </div>
+                  <div class="">
+                    <a *ngIf="data.rated=='False'" (click)="getReview(data.booking_id)" type="button" class="book-tab">
+                      Add Review
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="tab-pane active" *ngIf="tab === 2 && NoPassive">
+
+          <p class="bookhistory">No Completed Bookings are available</p>
+
+        </div>
+        <div class="tab-pane active" *ngIf="tab === 3 && !NoCancel">
+          <div *ngFor="let data of cancelData" class="col-md-4">
+
+            <div class="card">
+              <a (click)="historyDetails(data.booking_id)">
+                <div class="card-img">
+                  <img class="img-responsive" src={{data.property_img_url}}>
+                  <div class="travel-date">
+                    <div class="list-inlines">
+                      <span><a> <i class="fa fa-calendar"></i> {{data.journey_start_date | date:'dd MMM yyyy'}} to
+                          {{data.journey_end_date | date:'dd MMM yyyy'}}</a></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <div class="card-block">
+                <div class="card-title">
+                  <h4><a (click)="historyDetails(data.booking_id)" title="view more">{{data.property_name }}</a> </h4>
+
+                </div><br>
+                <div class="clearfix"> </div>
+                <div class="clearfix"></div>
+                <div class="card-text">
+                  <p class="cardp"><b>Booking ID :</b> {{data.booking_ref_id}}</p>
+                  <div class="clearfix"></div>
+                  <p class="cardp"><b>Booking Date :</b> {{data.booked_date | date:'dd MMM yyyy'}}</p>
+                </div>
+                <div class="clearfix"></div>
+                <div class="card-text">
+                  <p class="cardp"><b>Refund Status :</b> {{data.refund_status}}</p>
+                </div>
+                <div class="clearfix"> </div>
+
+                <hr>
+                <div class="card-footer">
+                  <div class="card-icons">
+
+                    <span class="rate">₹ {{data.total_amount}}</span>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="tab-pane active" *ngIf="tab === 3 && NoCancel">
+          <p class="bookhistory">No Cancelled Bookings are available</p>
+        </div>
+
+
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content modalnew">
+              <div class="modal-header">
+                <button type="button" class="close close1" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><b>Rating & Feedback</b></h4>
+              </div>
+              <div class="modal-body">
+                <div class="">
+                  <div class="row">
+                    <div class="col-sm-12">
+
+                      <div class="review-block">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <div class="review-block-name"><a href="#">{{reviewCategory}}</a></div>
+
+                            <div class="review-block-rate">
+                              <div class="review-block-title">Your Rating Here</div>
+                              <div *ngFor="let data of reviewData; let j = index">
+                                <div *ngIf="i==j">
+                                  <ngx-stars [size]="2" [color]="'#24b7a9'" [initialStars]=data.no_of_stars
+                                    class="rating-header" (ratingOutput)="onRatingSet($event)" style="cursor: pointer;">
+                                  </ngx-stars>
+                                </div>
+                              </div>
+
+                            </div>
+                            <div class="review-block-title">Your Feedback Here</div>
+                            <div>
+                              <textarea class="form-control" maxlength="100" name="feedback" [(ngModel)]="feedback"
+                                rows="3"></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="reviewLength>0" class="modal-footer">
+
+                <a *ngIf="!isConfirm && reviewData[i].no_of_stars!=0.0" (click)="next()" type="button"
+                  class="book-tab">Next</a>
+                <a *ngIf="isConfirm && reviewData[i].no_of_stars!=0.0 " (click)="confirm()" type="button"
+                  class="book-tab">Confirm</a>
+
+                <a *ngIf="!isConfirm && reviewData[i].no_of_stars==0.0" disabled (click)="next()" type="button"
+                  class="book-tab">Next</a>
+                <a *ngIf="isConfirm && reviewData[i].no_of_stars==0.0" disabled (click)="confirm()" type="button"
+                  class="book-tab">Confirm</a>
+              </div>
+            </div>
+          </div>
+        </div>

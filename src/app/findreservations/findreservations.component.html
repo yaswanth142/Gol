@@ -1,0 +1,190 @@
+<div id="myCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../assets/images/innerpagee.jpg" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption carousel-captionn">
+          <h1>Find Reservations</h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="clearfix"></div><br>
+
+
+
+
+  <div class="container">
+    <div class="row">
+      <h1 class="hiddenn">Find Reservations</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="reser-bg-form">
+          <form [formGroup]="reserveForm" (ngSubmit)="findReservation()">
+            <div class="col-sm-5">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email<strong style="color:red;">*</strong> </label>
+                <input type="text" name="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+                  placeholder="Email">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.email">Enter a valid email</div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-sm-5">
+              <div class="form-group">
+                <label for="exampleInputEmail11">Booking ID <strong style="color:red;">*</strong> </label>
+                <input type="text" name="bookingNo" formControlName="bookingNo" class="form-control"
+                  id="exampleInputEmail11" placeholder="Booking ID">
+                <div *ngIf="submitted && f.bookingNo.errors" class="invalid-feedback">
+                  <div *ngIf="f.bookingNo.errors.required">Booking ID is
+                    required</div>
+                  <div *ngIf="f.bookingNo.errors.pattern">Enter a valid
+                    Booking ID
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label for="exampleInputEmail1">&nbsp; &nbsp; </label>
+                <div></div>
+                <button type="submit" class="btn btn-find ">Find</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div *ngFor="let data of reserveData" class="col-md-12">
+        <div class="reser-bg">
+          <div class="col-md-4 row">
+            <img style="height: 231px;width: 324px;" class="img-responsive" src="{{imgPath}}{{data.property_img_url}}">
+          </div>
+          <div class="col-md-8 padd-hist">
+
+            <div class="clearfix"></div>
+            <div class="col-md-5">
+              <div class="space"><b>Booking ID :</b> {{data.booking_ref_id}}</div>
+              <div *ngIf="!data.is_package" class="space"><b>Check-in :</b>
+                {{data.journey_start_date | date:'dd MMM yyyy'}}</div>
+
+              <div *ngIf="data.is_package" class="space"><b>Departure Date :</b>
+                {{data.journey_start_date | date:'dd MMM yyyy'}}</div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="space"><b>Booking Date :</b> {{data.booked_date | date:'dd MMM yyyy'}}</div>
+              <div *ngIf="!data.is_package" class="space"><b> Check-out :</b>
+                {{data.journey_end_date | date:'dd MMM yyyy'}}</div>
+              <div *ngIf="data.is_package" class="space"><b>Arrival Date :</b>
+                {{data.journey_end_date | date:'dd MMM yyyy'}}</div>
+            </div>
+            <div class="col-md-5">
+              <div *ngIf="!data.is_package" class="space"><b>Property Name :</b> {{data.property_name}}</div>
+              <div *ngIf="data.is_package" class="space"><b>Package Name :</b> {{data.pkg_name}}</div>
+
+              <!-- <div><b>Status :</b>  {{data.booking_status}}</div> -->
+            </div>
+            <div class="col-md-6">
+              <!-- <div *ngIf="!data.is_package"  class="space"><b>Room Details :</b> {{data.property_name}}</div> -->
+              <div *ngIf="data.is_package" class="space"><b>Package Details :</b> {{data.property_name}}</div>
+
+              <!-- <div><b> End Date :</b>  {{data.journey_end_date}}</div> -->
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-6">
+              <div class="stat">Booking Status :</div>
+              <div *ngIf="data.booking_status=='Success'" class="bookedfnt1 success">{{data.booking_status}}</div>
+
+              <div *ngIf="data.booking_status=='Active'" class="bookedfnt1 active">{{data.booking_status}}</div>
+
+              <div *ngIf="data.booking_status=='Inactive'" class="bookedfnt1 inact">{{data.booking_status}}</div>
+
+              <div *ngIf="data.booking_status=='Confirm'" class="bookedfnt1 con">{{data.booking_status}}</div>
+              <div *ngIf="data.booking_status=='Cancel'" class="bookedfnt1 cancel">Cancelled</div>
+            </div>
+            <div class="col-md-6">
+              <div class="stat">Travel Status :</div>
+              <div *ngIf="data.entry_permit_status=='Accept'" class="bookedfnt1 success">Accepted</div>
+              <div *ngIf="data.entry_permit_status=='Reject'" class="bookedfnt1 cancel">Rejected</div>
+              <div *ngIf="data.entry_permit_status=='Pending'" class="bookedfnt1 con">{{data.entry_permit_status}}</div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-6">
+              <div class="bkct">
+                <div class="bookng">Booking Cost : </div>
+                <div class="cost">₹ {{data.total_amount}}</div>
+
+                <!-- entry_permit_no -->
+              </div>
+            </div>
+
+            <div *ngIf="data.refund_status!=null" class="col-md-6">
+              <div class="bkct">
+                <div class="bookng">Refund Status : </div>
+                <div  class="cost1">{{data.refund_status}}</div>
+
+                <!-- entry_permit_no -->
+              </div>
+            </div>
+            <!-- <div class="col-md-4 col-xs-4">
+                  <div class="cancel-btn">
+                    <button type="submit" class="btn btn-danger">Cancel</button>
+                  </div>
+              </div> -->
+          </div>
+          <div class="clearfix"></div>
+
+          <!-- <div class="row">
+              <div class="col-md-12">
+                <div class="reserbg">
+                  <div class="col-md-12">
+                      <div class="clearfix"></div>
+                      <div class="col-md-3">
+                          <div><b>Full Name :</b> Ajay</div>
+                          <div><b>Email :</b> Ajay@gmail.com</div>
+                      </div>
+                      <div class="col-md-3">
+                          <div><b>Mobile No :</b> 9465222555</div>
+                          <div><b>Gender :</b> Male</div>
+                      </div>
+                       <div class="col-md-2">
+                          <div><b>Nationality :</b> India</div>
+                          <div><b>DOB</b> 10/05/1984</div>
+                      </div>
+                      <div class="col-md-4">
+                          <div><b>Address :</b> AS Nivas, Kochi, Kerala,India</div>
+                          <div><b>Entry Permit</b> Approved</div>
+                      </div>
+      
+                  </div>
+              </div>
+              </div>
+            </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix"></div><br>
+
+
+
+
+  </div>
+
+
+
+</div>

@@ -1,0 +1,62 @@
+<div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="item active">
+            <!-- <img src="../assets/images/innerpage.jpg" class="img-responsive"> -->
+            <div class="container">
+                <div class="carousel-caption carousel-captionn">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="clearfix"></div><br>
+
+    <div *ngFor="let item of propertyData  | paginate: { itemsPerPage: 8, currentPage: p}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="lightbg">
+                        <div class="col-md-3">
+                            <div>
+                                <div *ngIf="item.property_name=='Samudram'">
+                                    <img class="img-responsive img-rounded"
+                                        src="{{samudramPath}}{{item.property_img_url}}"
+                                        style="height: 200px; width: 300px;">
+                                </div>
+                                <div *ngIf="item.property_name !='Samudram'">
+                                    <img class="img-responsive img-rounded" src="{{thumbpath}}{{item.property_img_url}}"
+                                        style="height: 200px; width: 300px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="col-md-12">
+                                <span>
+                                    <a>
+                                        <h3>{{item.property_name}}</h3>
+                                    </a>
+                                    <ngx-stars [readonly]="true" [size]="1" [color]="'#24b7a9'"
+                                        [initialStars]="item.average_rating" class="rating-header"></ngx-stars>
+                                </span>
+                                <p>{{item.property_address}}</p>
+                                <button *ngIf="item.property_name =='Samudram'" [routerLink]="['/info', item.property_id]"type="button"
+                                    class="btn btn-default pull-right" data-toggle="modal" data-target="#viewmodal">Book
+                                    now</button>
+                                <button *ngIf="item.property_name !='Samudram'" [routerLink]="['/packagedetails', item.property_id]" type="button"
+                                    class="btn btn-default pull-right" data-toggle="modal" data-target="#viewmodal">Book
+                                    now</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <pagination-controls style="text-align:center;" (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>

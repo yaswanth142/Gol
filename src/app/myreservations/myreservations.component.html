@@ -1,0 +1,97 @@
+<div id="myCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../assets/images/innerpagee.jpg" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption carousel-captionn">
+          <h1>My Reservation</h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="clearfix"></div><br><br>
+
+
+
+
+  <div class="container">
+    <div class="row"><h1 class="hiddenn">My Reservation</h1></div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="reser">
+          <div class="row">
+            <div *ngFor="let rdata of reservation_data">
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-img">
+                    <img class="img-responsive" src="../assets/images/gal_6.jpg">
+                    <div class="travel-date">
+                     <div class="list-inlines">
+                        <span><a> <i class="fa fa-calendar"></i> {{rdata.journey_start_date}} to
+                            {{rdata.journey_end_date}}</a></span>
+                      </div> 
+                    </div>
+                     <div class="out-border"><a>Package : {{rdata.property_type_name}}</a></div>
+                  </div>
+                  <div class="card-block">
+                    <div class="card-title">
+                      <h4>{{rdata.property_name}} </h4>
+                     
+                    </div><br>
+                    <div class="clearfix"> </div>
+                    <div class="clearfix"></div>
+                    <div class="card-text">
+                      <p class="cardp"><b>Booking ID :</b> {{rdata.booking_ref_id}}</p>
+                      <p><b>Booking Date :</b> {{rdata.booked_date}}</p>
+                    </div>
+                    <div class="card-text">
+                      <p class="cardp"><b>Booking Status :</b> {{rdata.status}}</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                   
+                    <hr>
+                    <div class="card-footer">
+                     <div class="card-icons">
+                      <!-- <rating class="star"  [(ngModel)]="rating"
+                                    [max]="5"
+                                    [readonly]="true"
+                                    [disabled]="false"
+                                    [required]="true"
+                                    [float]="true"
+                                    >
+                                      </rating> -->
+                      <ngx-stars [readonly]="true" [maxStars]="5" [initialStars]=rdata.average_rating
+                        [color]="'#24b7a9'"></ngx-stars>
+
+                      <!-- <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i> -->
+                                      <span class="rate">₹ {{rdata.total_amount}}</span>
+                    </div>
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix"></div><br>
+
+
+
+
+
+  </div>
+
+  <div class="clearfix"></div><br>
+</div>

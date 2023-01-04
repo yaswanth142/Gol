@@ -1,0 +1,56 @@
+<div id="myCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../assets/images/deal.jpg" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption carousel-captionn">
+          <h1>Get the best Deals & Offers!</h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="clearfix"></div><br>
+<div class="container">
+  <div class="row"><h1 class="hiddenn">Get the best Deals & Offers!</h1></div>
+  <div class="boxx">
+
+
+
+
+
+    <div *ngFor="let offer of offerData" class=" col-sm-6 col-md-4 isla-pack">
+      <div>
+        <a [routerLink]="['/offerProperty', offer.offer_id]">
+          <figure class="text-center">
+            <figcaption>
+              <h5     style="height: 29px;">{{offer.offer_name}}</h5>
+              <div class="clearfix"></div>
+              <div>
+                <span class="pull-left">{{offer.offer_start_date | date:'dd MMM yyyy' }}</span>-
+                <span class="pull-right">{{offer.offer_end_date | date:'dd MMM yyyy' }}</span>
+              </div>
+              <div class="clearfix"></div>
+              <div *ngIf="offer.offer_type!='hike'">
+                <span class=" text-success">
+                  <h3>{{offer.offer_percentage}}% Off</h3>
+                </span>
+
+              </div>
+              <div *ngIf="offer.offer_type=='hike'">
+                <span class=" text-danger">
+                  <h3>{{offer.offer_percentage}}% Hike</h3>
+                </span>
+
+              </div>
+
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div><br>

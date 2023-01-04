@@ -1,0 +1,102 @@
+.invalid-feedback{
+  color: rgb(230, 14, 14);  
+}
+.ng-select .is-invalid {
+
+  border-color: rgb(216, 12, 12);
+}
+
+.setleft{
+    float: left;
+    margin-right: 20px;
+    padding-top: 15px;
+}
+.setRight{
+    float: right;
+    padding-top: 15px;
+}
+.setSize{
+    font-size: 25px;
+}
+.setInput{
+    width: 50%;
+    float: left;
+}
+/* .selectHeight{
+    height: 55%;
+} */
+.ng-select-container {
+    height: 55px !important;
+}
+/* input.ng-invalid{
+    border: 1px solid red;
+  } */
+  .formhight{
+    height: 55px;;
+  }
+  .formbrdr{
+    border: 1px solid #f3f3f3 !important;
+  }
+  
+  .btn-default {
+    border-left: transparent;
+  }
+  .leftlable{
+    float: left;
+        margin-left: 3px;
+  }
+  ul.listlabel{
+    list-style: none;
+  }
+  ul.listlabel li{
+    list-style: none;
+    float: left;
+    display: inline;
+  }
+  ul.listlabel li a{
+    list-style: none;
+    color: #24b7a9;
+  }
+  .inputbox{
+    float: left;
+      display: inline;
+      width: 50px  !important;
+      margin: 0px 10px;
+  }
+  .iconpdng{
+    padding: 10px 0px;
+  }
+  .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+    color: #333;
+    background-color: #fff;
+    border-color: #efefef;
+  }
+  .closebtn{
+    border: 1px solid #0b0000 !important;
+    color:#0b0000;
+    border-radius: 7px !important;
+    height: 35px !important;
+    float: right;
+    outline: none;
+  
+  }
+  .newbtnc{
+    border: 1px solid #24b7a9 !important;
+      /* color: aliceblue; */
+      border-radius: 7px !important;
+      height: 35px !important;
+  }
+  .ng-dropdown-panel {
+   
+    z-index: 2000;
+ }
+
+ .drop .ng-select .ng-select-container {
+  min-height: 35px !important;
+}
+.modal{
+  z-index: 1999;
+}
+.hei{
+  height: 64px ;
+}

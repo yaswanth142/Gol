@@ -1,0 +1,30 @@
+.invalid-feedback{
+    color: rgb(230, 14, 14);  
+}
+.ng-select .is-invalid {
+
+    border-color: rgb(216, 12, 12);
+} 
+
+.space{
+    margin-bottom: 10px;
+}
+
+.con{
+    background: #24b7a9
+}
+.inact{
+    background: Orange
+}
+
+.cancel{
+    background: red
+}
+
+.success{
+    background: green
+}
+
+.active{
+    background: #3a5eca
+}

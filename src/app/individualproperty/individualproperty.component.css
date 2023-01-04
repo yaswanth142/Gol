@@ -1,0 +1,12 @@
+.invalid-feedback{
+    color: rgb(230, 14, 14);  
+}
+.hei{
+    height: 38px !important;
+}
+.formhight{
+    cursor: auto !important;
+}
+.btnclear{
+    display: none !important; 
+}

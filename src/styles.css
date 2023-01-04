@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+.pointer{
+    cursor: pointer;
+}
+.swal2-title {
+    font-size: 1.7em !important;
+    font-weight: 300 !important;
+}
+.hei{
+    height: 64px ;
+  }
+  .passEye{
+    position: absolute;
+    float: right;
+    right: 60px;
+    margin-top: -45px;
+  }
+
+  .passEye1{
+  position: absolute;
+    float: right;
+    right: 31px;
+    margin-top: 16px;
+  }
+  .content p{
+    margin: 0 25px;
+    padding-left: 15px;
+  }
+  
+  .content h5 {
+    margin: 15px 0px;
+    padding-left:15px;
+  }
+  .content ul{
+    margin: 10px 25px;
+    padding-left: 15px;
+    text-align: justify;
+  }
+  p{
+    overflow-wrap: break-word;
+    /* text-align:justify; */
+  }

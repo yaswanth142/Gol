@@ -1,0 +1,709 @@
+<div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="../../assets/images/package.jpg" class="img-responsive">
+            <div class="container">
+                <div class="carousel-caption carousel-captionn">
+                    <h1>{{propertyName}}</h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- <marquee behavior="scroll" direction="left">Child below 3 year old need not be booked</marquee> -->
+
+    <div class="clearfix"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="preview island-preview">
+                    <h3>{{propertyName}} </h3>
+
+                    <div class="preview-pic tab-content">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
+                                    [config]="slideConfig">
+                                    <div ngxSlickItem *ngFor="let shipimg of shipImages;let j=index;" class="slide">
+                                        <img class="img-responsive img-rounded" src="{{thumpUrl}}{{shipimg}}">
+                                    </div>
+                                </ngx-slick-carousel>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="hr-br">
+                    <div class="island-preview-content">
+                        <p style="text-align:justify;">
+                            <span [innerHTML]=pkg_desc></span>
+                        </p>
+                    </div>
+
+                    <hr class="hr-br">
+
+
+
+
+                </div>
+
+                <div *ngIf="isLandCruise" class="travel-det">
+               
+                    <div class="col-md-6 trv-head">
+                     <h2>Onward Details</h2>
+                        <div class="travel-details">
+                            <div class="trv-place">
+                                <h3>{{deptLocation}} </h3>
+                                <p>{{shipName}}</p>
+                            </div>
+                            <div class="travel-icon">
+                            
+                            <i class="fa fa-ship" aria-hidden="true"></i>
+                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                            </div>
+                             <div class="trv-place">
+                                <h3>{{destLocation}}</h3>
+                            </div>
+                        </div>
+                        <div class="travel-dates">
+                        <div class="arrival-date">
+                            <p>Departure</p>
+                            <h3>{{ deptDate| date:' MMM dd'}} <span>{{departureTime}}</span></h3>
+                            </div>
+                            <div class="arrival-date">
+                            <p>Arrival</p>
+                            <h3>{{ destDate| date:' MMM dd'}} <span>{{destinationTime}}</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 trv-head">
+                    <h2>Return Details</h2>
+                        <div class="travel-details">
+                            <div class="trv-place">
+                                <h3> {{returnLocation}}</h3>
+                              
+                            </div>
+                            <div class="travel-icon">
+                            
+                            <i class="fa fa-ship" aria-hidden="true"></i>
+                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                            </div>
+                             <div class="trv-place">
+                                <h3> {{arrivalLocation}}</h3>
+                                  <p>{{returnShipName}}</p>
+                            </div>
+                        </div>
+                        <div class="travel-dates">
+                        <div class="arrival-date">
+                            <p>Departure</p>
+                            <h3>{{ returnDate| date:' MMM dd'}} <span>{{returnTime}}</span></h3>
+                            </div>
+                            <div class="arrival-date">
+                            <p>Arrival</p>
+                            <h3>{{ arrivalDate| date:' MMM dd'}} <span>{{arrivalTime}}</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+
+
+                <form [formGroup]="shipForm" class="roomtype" (ngSubmit)="onSubmit()">
+                <div *ngIf="isSamudram || isLandCruise">
+                    <div class="row">
+                        <div class="" *ngFor="let item of shipClass;let i=index;">
+                            <div class="reserbg">
+                                <div class="col-md-12">
+                                    <div class="col-md-12">
+                                        <p class="formp"><b>{{item.package_class}}</b> </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-6 ship-type">
+                                        <div>
+                                            <b>Adult Fare{{pkgAdultAge}} :</b>&nbsp;<i class="fa fa-inr"
+                                                aria-hidden="true"></i> {{item.spcm_adult_fare}}</div>
+
+                                    </div>
+                                    <div class="col-md-6 ship-type">
+                                        <div><b>Child Fare{{pkgChidAge}} :</b>&nbsp;<i class="fa fa-inr"
+                                                aria-hidden="true"></i> {{item.spcm_child_fare}}</div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    
+                                    <div class="col-md-6 ship-type">
+                                        <div><b>Remaining Occupancy :</b> {{item.count}}</div>
+                                    </div>
+                                    <div class="clearfix"></div><br>
+
+                                    <div formArrayName="itemRows">
+                                        <div *ngFor="let itemrow of formArr.controls; let j=index" [formGroupName]="j">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <tooltip-content #myTooltip [animation]="true" placement="left">
+
+                                                            <span style="text-align: left;">{{pkgAdultAge}}
+                                                            </span>
+                                                        </tooltip-content>
+                                                        <label for="inputPassword" class="col-md-6 control-label"
+                                                            [tooltip]="myTooltip">Adult
+                                                        </label>
+                                                        <div class="col-sm-7">
+                                                            <div class="setleft1"><i class="fa fa-minus-circle pointer"
+                                                                    (click)=removeAdult(i)></i>
+                                                            </div>
+                                                            <div class="fncl">
+                                                                {{adult[i]}}
+                                                            </div>
+                                                            <div class="setRight1"><i class="fa fa-plus-circle pointer"
+                                                                    (click)=addAdult(i)></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <tooltip-content #myTooltip1 [animation]="true"
+                                                            placement="left">
+
+                                                            <span style="text-align: left;">{{pkgChidAge}}
+                                                            </span>
+                                                        </tooltip-content>
+                                                        <label for="inputPassword" class="col-md-6 control-label"
+                                                            [tooltip]="myTooltip1">Child
+                                                        </label>
+                                                        <div class="col-sm-7">
+                                                            <div class="setleft1"><i class="fa fa-minus-circle pointer"
+                                                                    (click)=removeChild(i)></i>
+                                                            </div>
+                                                            <div class="fncl">
+                                                                {{child[i]}}
+                                                            </div>
+                                                            <div class="setRight1"><i class="fa fa-plus-circle pointer"
+                                                                    (click)=addChild(i)></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <tooltip-content #myTooltip2 [animation]="true"
+                                                            placement="left">
+
+                                                            <span style="text-align: left;">{{pkgInfantAge}}
+                                                            </span>
+                                                        </tooltip-content>
+                                                        <label for="inputPassword" class="col-md-6 control-label"
+                                                            [tooltip]="myTooltip2">Infants
+                                                        </label>
+                                                        <div class="col-sm-7">
+                                                            <div class="setleft1"><i class="fa fa-minus-circle pointer"
+                                                                    (click)=removeInfant(i)></i>
+                                                            </div>
+                                                            <div class="fncl">
+                                                                {{infant[i]}}
+                                                            </div>
+                                                            <div class="setRight1"><i class="fa fa-plus-circle pointer"
+                                                                    (click)=addInfant(i)></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <hr _ngcontent-pfs-c4="" class="hr-br">
+                                        <div class="col-md-12">
+
+                                            <div *ngIf="item.roomAmount>0" class="col-md-6 grand-total">
+                                                <span>Package cost </span> : <span class="total-vale"> <i
+                                                        aria-hidden="true" class="fa fa-inr"></i> {{item.roomAmount}}
+                                                </span></div>
+                                                <div *ngIf="item.roomAmount <= 0" class="col-md-6 grand-total">
+                                                </div>
+                                            <div class="col-md-6"><a class="btn btn-default pull-right"
+                                                    (click)="checkAvail(i)">Check Availability</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div><br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- <div *ngIf="isFee" class="row">
+                        <div class="trans-spt ">
+                            <div *ngIf="isHeritageShow">
+                                <h5><strong>Heritage Fee</strong> </h5>
+                                <div class="heri-fee">
+                                    <div> Adult : &nbsp;<i aria-hidden="true" class="fa fa-inr"></i>
+                                        {{heritage_fee_adult}} </div>
+
+                                    <div class="cont-rig"> Child : &nbsp;<i aria-hidden="true" class="fa fa-inr"></i>
+                                        {{heritage_fee_child}}
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="hr-br">
+                            <div *ngIf="isModeShow">
+                                <div class="form-group row mb-4">
+                                    <label class="col-lg-3 col-form-label form-control-label">Internal Transportation</label>
+                                    <div class="col-lg-6">
+                                        <ng-select formControlName="transportType" [items]="transportation"
+                                            bindLabel="transport_type" bindValue="transport_id"
+                                            (change)="viewDetails($event)" [clearable]="false"
+                                            placeholder="Internal Transportation">
+                                        </ng-select>
+                                        <div *ngIf="submitted && f.transportType.errors" class="invalid-feedback">
+                                            <div *ngIf="f.transportType.errors.required">
+                                                Internal Transportation is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="heri-fee">
+                                    <div> Adult : &nbsp;<i aria-hidden="true" class="fa fa-inr"></i>
+                                        {{transport_fee_adult}} </div>
+
+                                    <div class="cont-rig"> Child : &nbsp;<i aria-hidden="true" class="fa fa-inr"></i>
+                                        {{transport_fee_child}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> -->
+                </div>
+                <div *ngIf="isLand || isLandCruise">
+                    <div  *ngIf="!isSamudram">
+                        <div class="row">
+                            <div class="whtbox ">
+                                <div class="col-md-5 ">
+                                    <p style="cursor: pointer;"  data-toggle="modal" data-target="#infoLink">General Room Policy <i class="fa fa-info-circle" aria-hidden="true"
+                                            style="color:black"></i></p>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <p>Adult:{{proAdultAge}}.</p>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <p>Child:{{genChildAge}}.</p>
+                                </div>
+
+                                <!-- <div class="col-md-2 pad">
+                                    <p>Toddler:{{genChildAge}}.</p>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngFor="let room of roomDetails;let i=index;" class="row">
+                        <div class="rooms">
+                            <div class="col-md-4">
+                                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
+                                    [config]="slideConfig">
+                                    <div ngxSlickItem
+                                        *ngFor="let roomimg of room.property_room_img;let imageroom=index;"
+                                        class="slide">
+                                        <img class="img-responsive img-rounded"
+                                            src="{{roomThumbPath}}{{roomimg}}">
+                                    </div>
+                                </ngx-slick-carousel>
+                            </div>
+                            <div class="col-md-8 ">
+                                <h3 class="mainfnt">{{room.room_type}}</h3>
+                                <div  class="amenity">
+                                    <ul>
+
+                                        <li><i class="fa fa-child"></i>Single <span
+                                                *ngIf="pType=='Sports'">Room</span>
+                                            <span *ngIf="pType=='Private Property'">Occupancy</span>: &nbsp;<i
+                                                class="fa fa-inr" aria-hidden="true"></i>{{room.single}}
+                                        </li>
+                                        <li><i class="fa fa-child"></i>Double Room: &nbsp;<i class="fa fa-inr"
+                                                aria-hidden="true"></i>{{room.double}}
+                                        </li>
+                                        <!-- <li><i class="fa fa-child"></i>Per Child: &nbsp;<i class="fa fa-inr"
+                                                aria-hidden="true"></i>{{room.child}}</li> -->
+                                        <li><i class="fa fa-child"></i>Extra bed: &nbsp;<i class="fa fa-inr"
+                                                aria-hidden="true"></i>{{room.extra}}</li>
+
+                                        <li ><i class="fa fa-child"></i>Remaining Occupancy:
+                                            &nbsp;{{room.count}}</li>
+                                    </ul>
+                                </div>
+
+                                <!-- <div *ngIf="room.room_type=='Tent'" class="amenity">
+                                    <ul>
+
+                                        <li><i class="fa fa-child"></i>Tent: &nbsp;<i class="fa fa-inr"
+                                                aria-hidden="true"></i>{{room.tent}}</li>
+                                        <li><i class="fa fa-child"></i>Per Child: &nbsp;<i class="fa fa-inr"
+                                                aria-hidden="true"></i>{{room.child}}</li>
+
+                                        <li><i class="fa fa-child"></i>Extra bed: &nbsp;<i class="fa fa-inr"
+                                                aria-hidden="true"></i>{{room.extra}}</li>
+                                        <li *ngIf="isSearch"><i class="fa fa-child"></i>Remaining Occupancy:
+                                            &nbsp;{{room.count}}</li>
+
+                                    </ul>
+                                </div> -->
+
+
+                                <div class="clearfix"></div><br><br>
+                                <div>
+
+                                </div>
+                                <div>
+
+                                    <div formArrayName="itemRows1">
+                                        <div *ngFor="let itemrow1 of formArr1.controls; let j=index"
+                                            [formGroupName]="j">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group frmpd">
+                                                        <tooltip-content #myTooltip4 [animation]="true"
+                                                            placement="left">
+
+                                                            <span style="text-align: left;">{{proAdultAge}}
+                                                            </span>
+                                                        </tooltip-content>
+
+                                                        <label for="inputPassword"
+                                                            class="col-sm-6 control-label"
+                                                            [tooltip]="myTooltip4">Adult{{proAdultAge}}
+                                                        </label>
+                                                        <div class="col-sm-6">
+                                                            <div class="setleft1"><i
+                                                                    class="fa fa-minus-circle pointer"
+                                                                    (click)=removeAdultPro(i)></i>
+                                                            </div>
+                                                            <div class="fncl">
+                                                                {{adultProperty[i]}}
+                                                            </div>
+                                                            <div class="setRight1"><i
+                                                                    class="fa fa-plus-circle pointer"
+                                                                    (click)=addAdultPro(i)></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group frmpd">
+                                                        <tooltip-content #myTooltip5 [animation]="true"
+                                                            placement="left">
+
+                                                            <span style="text-align: left;">{{proChidAge}}
+                                                            </span>
+                                                        </tooltip-content>
+                                                        <label for="inputPassword"
+                                                            class="col-sm-6 control-label"
+                                                            [tooltip]="myTooltip5" >Child{{proChidAge}}
+                                                        </label>
+                                                        <div class="col-sm-6">
+                                                            <div class="setleft1"><i
+                                                                    class="fa fa-minus-circle pointer"
+                                                                    (click)=removeChildPro(i)></i>
+                                                            </div>
+                                                            <div class="fncl">
+                                                                {{childProperty[i]}}
+                                                            </div>
+                                                            <div class="setRight1"><i
+                                                                    class="fa fa-plus-circle pointer"
+                                                                    (click)=addChildPro(i)></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                
+                                            </div>
+                                            <div *ngIf="adultProperty[i]>0" class="row">
+                                                <div>
+                                                    <div *ngIf="!isSearch"> 
+
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-group frmpd">
+                                                                <tooltip-content #myTooltip6 [animation]="true"
+                                                                    placement="left">
+        
+                                                                    <span style="text-align: left;">{{proToddlerAge}}
+                                                                    </span>
+                                                                </tooltip-content>
+                                                                <label for="inputPassword"
+                                                                    class="col-sm-6 control-label"
+                                                                    [tooltip]="myTooltip6" >Child{{proToddlerAge}}
+                                                                </label>
+                                                                <div class="col-sm-6">
+                                                                    <div class="setleft1"><i
+                                                                            class="fa fa-minus-circle pointer"
+                                                                            (click)=removeToddlerPro(i)></i>
+                                                                    </div>
+                                                                    <div class="fncl">
+                                                                        {{toddler[i]}}
+                                                                    </div>
+                                                                    <div class="setRight1"><i
+                                                                            class="fa fa-plus-circle pointer"
+                                                                            (click)=addToddlerPro(i)></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-group frmpd">
+                                                                <label for="inputPassword"
+                                                                    class="col-sm-6 control-label">Single
+                                                                    <span *ngIf="pType=='Sports'">Room</span>
+                                                                    <span
+                                                                        *ngIf="pType=='Private Property'">Occupancy</span>
+                                                                </label>
+                                                                <div class="col-sm-6">
+                                                                    <div class="setleft1"><i
+                                                                            class="fa fa-minus-circle pointer"
+                                                                            (click)=removeSinglePro(i)></i>
+                                                                    </div>
+                                                                    <div class="fncl">
+                                                                        {{singleroomProperty[i]}}
+
+                                                                    </div>
+
+                                                                    <div class="setRight1"><i
+                                                                            class="fa fa-plus-circle pointer"
+                                                                            (click)=addSinglePro(i)></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                       
+                                                        <div class="clearfix"></div>
+
+                                                        <div  *ngIf="room.count>1" class="col-md-6">
+                                                            <div class="form-group frmpd">
+                                                                <label for="inputPassword"
+                                                                    class="col-sm-6 control-label">Double
+                                                                    Room</label>
+                                                                <div class="col-sm-6">
+                                                                    <div class="setleft1"><i
+                                                                            class="fa fa-minus-circle pointer"
+                                                                            (click)=removeDoublePro(i)></i>
+                                                                    </div>
+                                                                    <div class="fncl">
+                                                                        {{doubleroomProperty[i]}}
+
+                                                                    </div>
+                                                                    <div class="setRight1"><i
+                                                                            class="fa fa-plus-circle pointer"
+                                                                            (click)=addDoublePro(i)></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div  *ngIf="room.count>2" class="col-md-6">
+                                                            <div class="form-group frmpd">
+                                                                <label for="inputPassword"
+                                                                    class="col-sm-6 control-label">Extra
+                                                                    Bed</label>
+                                                                <div class="col-sm-6">
+                                                                    <div class="setleft1"><i
+                                                                            class="fa fa-minus-circle pointer"
+                                                                            (click)=removeExtraPro(i)></i>
+                                                                    </div>
+                                                                    <div class="fncl">
+                                                                        {{extraroomProperty[i]}}
+
+                                                                    </div>
+                                                                    <div class="setRight1"><i
+                                                                            class="fa fa-plus-circle pointer"
+                                                                            (click)=addExtraPro(i)></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+
+
+                                                    
+                                                </div>
+
+                                               
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <hr _ngcontent-aai-c4="" class="hr-br">
+                                <div class="row garnd-top">
+                                    <div class="col-md-12">
+                                        <div class="col-md-9  grand-total">
+                                            <div *ngIf="room.roomAmount>0">
+                                                <span *ngIf="packageTypeCode=='150002'">Per night cost : </span>
+                                                <span *ngIf="packageTypeCode=='150003'">Property cost : </span>
+                                                <span class="total-vale"> <i
+                                                        class="fa fa-inr" aria-hidden="true"></i>
+                                                    {{room.roomAmount}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <a class="btn btn-default pull-right" (click)="checkAvailPro(i)">Check
+                                                Availability</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div *ngIf="isFee" class="row">
+                    <div class="trans-spt ">
+                        <div *ngIf="isHeritageShow">
+                            <h5><strong>Heritage Fee</strong> </h5>
+                            <div class="heri-fee">
+                                <div> {{heritageAdult}} : &nbsp;<i aria-hidden="true" class="fa fa-inr"></i>
+                                    {{heritage_fee_adult}} </div>
+
+                                <div class="cont-rig"> {{heritageChild}} : &nbsp;<i aria-hidden="true"
+                                        class="fa fa-inr"></i>
+                                    {{heritage_fee_child}}
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr-br">
+                        <div *ngIf="isModeShow">
+                            <div class="form-group row mb-4">
+                                <label class="col-lg-3 col-form-label form-control-label">Internal Transportation</label>
+                                <div class="col-lg-6">
+                                    <ng-select formControlName="transportType" [items]="transportation"
+                                        bindLabel="transport_type" bindValue="transport_id"
+                                        (change)="viewDetails($event)" [clearable]="false"
+                                        placeholder="Internal Transportation">
+                                    </ng-select>
+                                    <div *ngIf="submitted && f.transportType.errors" class="invalid-feedback">
+                                        <div *ngIf="f.transportType.errors.required">
+                                            Internal Transportation is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div   *ngIf="transData" class="heri-fee">
+                                <div> {{transAdult}} : &nbsp;<i aria-hidden="true" class="fa fa-inr"></i>
+                                    {{transport_fee_adult}} </div>
+
+                                <div class="cont-rig"> {{transChild}} : &nbsp;<i aria-hidden="true"
+                                        class="fa fa-inr"></i>
+                                    {{transport_fee_child}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                    <br>
+                    <div class="row" *ngIf="showTotal">
+                        <div class="col-md-12">
+                            <div *ngIf="totalAmount>0" class="col-md-6 col-md-offset-2 grand-total">
+                                <span   >Total : </span><span class="total-vale"> <i class="fa fa-inr"
+                                        aria-hidden="true"></i> {{totalAmount}} <br>
+                                    <!-- <span *ngIf="isHeritageShow  && isTransport">(Including Heritage Fee and Internal
+                                        Transportation Fee)</span>
+                                    <span *ngIf="!isHeritageShow  && isTransport">(Including
+                                        Internal Transportation fee)</span>
+                                    <span *ngIf="isHeritageShow &&  !isTransport && totalAmount>0 ">(Including
+                                        Heritage Fee)</span> </span> -->
+                                        <span  *ngIf="isFee" >(Excluding Heritage Fee and Internal
+                                            Transportation Fee)</span>
+                                    </span>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-default bok-de pull-right">Book
+                                Now</button>
+                        </div>
+                    </div>
+                    <div *ngIf="!showTotal">
+                        <h3>Package details will be updated soon.</h3>
+                    </div>
+                </form>
+
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="app-dwn">
+                    <a href=" https://play.google.com/store/apps/details?id=com.golak&hl=en" target="_blank"> <img
+                            src="../assets/images/app-down.jpg"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div><br><br>
+
+    <div class="modal fade" id="infoLink" tabindex="-1" role="dialog" aria-labelledby="infoLinkTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-size: 20px;" id="exampleModalLongTitle">General Room Policy
+                </h5>
+                <button type="button" class="close close1" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4 style="font-size: 15px;">Single <span *ngIf="pType=='Sports'">Room</span>
+                            <span *ngIf="pType=='Private Property'">Occupancy</span></h4>
+                        <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; {{genSingleAdult}} Adult {{singleAndOr}} {{genSingleChild}} Child<br>
+                        <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; {{genSingleExtra}} Extra Bed(Optional)
+
+                    </div>
+                    <div class="col-md-4">
+                        <h4 style="font-size: 15px;">Double Room</h4>
+                        <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; {{genDoubleAdult}} Adult {{doubleAndOr}} {{genDoubleChild}} Child<br>
+                        <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; {{2}} Extra Bed(Optional)
+                    </div>
+                    <!-- <div class="col-md-3">
+                        <h4 style="font-size: 15px;">Tent</h4>
+                        <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; 2 Adult & 3 Child <br>
+                        <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; 1 Extra Bed(Optional)
+                    </div> -->
+                    <div class="col-md-4">
+                        <h4 style="font-size: 15px;">Extra Bed</h4>
+                        <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; {{genExtraAdult}} Adult {{extraAndOr}} {{genExtraChild}} Child<br>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div *ngIf="pType=='Sports'" class="col-md-6">
+                        <!-- Entry Permit will be processed within 2 days -->
+                    </div>
+                    <div *ngIf="pType!='Sports'" class="col-md-6">
+                        Entry Permit will be processed within 20 days
+                    </div>
+                    <div class="col-md-6">
+                        <a type="button" class="book-tab" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+

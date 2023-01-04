@@ -1,0 +1,14 @@
+.table-responsive {
+    min-height: .01%;
+    overflow-x: visible!important;
+}
+.invalid-feedback{
+    color: rgb(230, 14, 14);  
+    font-size: small;  
+    /* margin-top: -15px;      */
+    margin-bottom: 5px; 
+}
+.ng-select .is-invalid {
+
+    border-color: rgb(216, 12, 12);
+}

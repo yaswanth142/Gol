@@ -1,0 +1,160 @@
+<div id="myCarousel" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="../assets/images/innerpagee.jpg" class="img-responsive">
+                <div class="container">
+                    <div class="carousel-caption carousel-captionn">
+                            <h1>{{offerName}}</h1>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    
+        <div class="clearfix"></div><br>
+
+<div class="container">
+    <div class="row"><h1 class="hiddenn">{{offerName}}</h1></div> 
+        <div class="zoom1">
+        <div *ngFor="let item of propertyList;let i=index;">
+            <a *ngIf="item.type!='package'" [routerLink]="['/packagedetails', item.id]">
+                <div class="">
+                    <div class="col-md-4">
+                        <div class="lightbg">
+                            <div class="">
+                                <!-- <div *ngIf="item.offers" class="offerbadge">
+                                    <img class="img-responsive" alt="On offer"
+                                        src="../../assets/images/ribbon.svg">
+                                    <div class="offer-inner">Offer</div>
+                                </div> -->
+                                <div class="stay-pak">
+                                <img class="img-responsive" src="{{item.url}}"
+                                    style="height: 200px; width: 300px;">
+                                    <!-- <div class="out-border"><a>Package : {{item.property_type_name}}</a>
+                                    
+                                    </div> -->
+                                </div>
+
+                            </div>
+                            <div class="caption">
+                                <div>
+                                    <span>
+                                       
+                                        <div  class="hei">
+                                                <h3 >{{item.name}}</h3>
+                                                <!-- <h3 *ngIf="item.name.length>20">{{item.name | slice:0:20}}..</h3> -->
+                                            </div>
+                                        
+
+                                        <ngx-stars [readonly]="true" [size]="1" [color]="'#ffd700'"
+                                            [initialStars]="item.average_rating" class="rating-header">
+                                        </ngx-stars>
+                                    </span>
+                                    <div *ngIf="item.address.length>40" class="att-detail2">
+                                        <p>{{item.address | slice:0:39 }}...</p>
+                                    </div>
+                                    <div *ngIf=" item.address.length<40" class="att-detail2">
+                                        <p>
+                        
+                                            {{item.address}}
+                                            </p>
+                                          </div>
+                                   
+                                    <!-- <button type="button" class="btn btn-primary" data-toggle="collapse"
+                                data-target="#collapseDetail" aria-expanded="false">Book Room</button> -->
+
+                                    <!-- <button type="button" class="btn detail-btn" data-toggle="modal"
+                                data-target="#viewmodal">View Details</button> -->
+
+                                <!-- <span class="start">Starting Price is <span class="startprice">₹1810</span></span> -->
+                                <!-- <div style="height: 30px;">
+                                        <span *ngIf="item.base_fare!='NA'" class="start">Starting from <span class="startprice">₹{{item.base_fare}}</span></span>
+                                      </div> -->
+                                </div>
+
+                            </div>
+
+                            <div class="collapse" id="collapseDetail">
+
+                            </div>
+
+                        </div>
+                    </div>
+                   
+                </div>
+
+            </a>
+            <a *ngIf="item.type=='package'" [routerLink]="['/package', item.id]">
+                <div class="">
+                    <div class="col-md-4">
+                        <div class="lightbg">
+                            <div class="">
+                                <!-- <div *ngIf="item.offers" class="offerbadge">
+                                    <img class="img-responsive" alt="On offer"
+                                        src="../../assets/images/ribbon.svg">
+                                    <div class="offer-inner">Offer</div>
+                                </div> -->
+                                <div class="stay-pak">
+                                <img class="img-responsive" src="{{item.url}}"
+                                    style="height: 200px; width: 300px;">
+                                    <!-- <div class="out-border"><a>Package : {{item.property_type_name}}</a>
+                                    
+                                    </div> -->
+                                </div>
+
+                            </div>
+                            <div class="caption">
+                                <div>
+                                    <span>
+                                            <!-- <div  class="hei">
+                                                    <h3 *ngIf="item.name.length<20">{{item.name}}</h3>
+                                                    <h3 *ngIf="item.name.length>20">{{item.name | slice:0:20}}..</h3>
+                                                </div> -->
+                                                <div  class="hei">
+                                                        <h3 >{{item.name}}</h3>
+                                                        
+                                                    </div>
+                                        
+
+                                        <ngx-stars [readonly]="true" [size]="1" [color]="'#ffd700'"
+                                            [initialStars]="item.average_rating" class="rating-header">
+                                        </ngx-stars>
+                                    </span>
+                                    <div *ngIf="item.address.length>40" class="att-detail2">
+                                        <p>{{item.address | slice:0:39 }}...</p>
+                                    </div>
+                                    <div *ngIf=" item.address.length<40" class="att-detail2">
+                                        <p>
+                        
+                                            {{item.address}}
+                                            </p>
+                                          </div>
+                                   
+                                    <!-- <button type="button" class="btn btn-primary" data-toggle="collapse"
+                                data-target="#collapseDetail" aria-expanded="false">Book Room</button> -->
+
+                                    <!-- <button type="button" class="btn detail-btn" data-toggle="modal"
+                                data-target="#viewmodal">View Details</button> -->
+
+                                <!-- <span class="start">Starting Price is <span class="startprice">₹1810</span></span> -->
+                                <!-- <div style="height: 30px;">
+                                        <span *ngIf="item.base_fare!='NA'" class="start">Starting from <span class="startprice">₹{{item.base_fare}}</span></span>
+                                      </div> -->
+                                </div>
+
+                            </div>
+
+                            <div class="collapse" id="collapseDetail">
+
+                            </div>
+
+                        </div>
+                    </div>
+                   
+                </div>
+
+            </a>
+        </div>
+    </div>
+</div>
+</div>

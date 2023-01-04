@@ -1,0 +1,627 @@
+<!-- <body class="bg1">
+ 
+    <div class="login-page1">
+     <div class="login-logo1">
+       <h2>Profile</h2>
+     </div>
+     <div class="form1">
+       <form #f="ngForm" (ngSubmit)="profileUpdate(f)"  class="login-form">
+         <div class="row">
+           <div class="col-md-6">
+             <label>First Name<strong style="color:red;">*</strong></label>
+             <input pattern="[a-zA-Z]+"  autofocus  name="firstname" [(ngModel)]="firstname" required  #firstNameControl="ngModel" type="text" placeholder="First name" class="span3" >
+             <span style="color:red;"  class="help-block" *ngIf="firstNameControl.errors?.required && firstNameControl.touched">
+              First Name is required
+          </span>
+          <span style="color:red;"  class="help-block" *ngIf="firstNameControl.errors?.pattern && firstNameControl.touched && !(firstNameControl.errors?.required)">
+            Only Alphabets allowed
+        </span>
+            </div>
+             <div class="col-md-6">
+               <label>Last Name<strong style="color:red;">*</strong></label>
+             <input name="lastName" pattern="[a-zA-Z]+" [(ngModel)]="lastName" required  type="text"  #lastNameControl="ngModel" placeholder="Last name" class="span3">
+             <span style="color:red;"  class="help-block" *ngIf="lastNameControl.errors?.required && (lastNameControl.dirty||lastNameControl.touched)">
+              Last Name is required
+            </span>
+            <span style="color:red;"  class="help-block" *ngIf="lastNameControl.errors?.pattern && lastNameControl.touched && !(lastNameControl.errors?.required)">
+              Only Alphabets allowed
+          </span>
+            
+            </div>
+         </div>
+         
+         <div class="row">
+             <div class="col-md-6">
+             <label>Email<strong style="color:red;">*</strong></label>
+             <input disabled type="email" placeholder="Email id" [(ngModel)]= "email" required #emailControl="ngModel"  name= "email"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="span3">
+             <div style="color:red;" class="help-block" *ngIf="emailControl.invalid && (emailControl.dirty||emailControl.touched)">
+              <div *ngIf="emailControl.errors?.required" >
+                Email is required
+              </div>
+              <div *ngIf=" emailControl.errors?.pattern && !(emailControl.errors?.required)">Email must be valid</div>
+            </div>
+            </div>
+             <div class="col-md-6">
+               <label>Mobile<strong style="color:red;">*</strong></label>
+               <input type="text" disabled name="phone"  [(ngModel)]="phone" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9,11}$" required #MobileControl="ngModel" placeholder="Mobile" class="span3" >
+               <span style="color:red;"  class="help-block" *ngIf="MobileControl.invalid && MobileControl.touched">
+                 Must be a valid Number
+               </span>
+             </div>
+         </div>
+   
+         <div class="row">
+             <div class="col-md-6">
+             <label>DOB<strong style="color:red;">*</strong></label>
+             <input type="date" (change)="dobcheck($event.target.value)" [(ngModel)]="dob" required #dateControl="ngModel" required  name="dob" min="1950-01-01" max="2004-12-31" class="span3">
+                              <span style="color:red;"  class="help-block" *ngIf="dateControl.invalid && dateControl.touched ">
+                                  Date of Birth is required
+                              </span>
+                              
+                              <span *ngIf="dateControl.touched && isDob "style="color:red;"  class="help-block">
+                                Invalid Date
+                              </span>
+           </div>
+             <div class="col-md-6">
+               <label>Address<strong style="color:red;">*</strong></label>
+             <textarea class="form-control" [(ngModel)]= "address" maxlength="150" #addressControl="ngModel" required name="address" placeholder="House Name/NO" rows="1"></textarea>
+             <span style="color:red;" class="help-block" *ngIf="addressControl.invalid && addressControl.touched">
+              Address required
+               </span>
+             </div>
+         </div>
+   
+         <div class="row">
+             <div class="col-md-6">
+               <label>Country<strong style="color:red;">*</strong></label>
+               <select  [(ngModel)]= "mcountry"  (change)="onChangeCountry($event.target.value)" #contryControl="ngModel"  name="mcountry" class="form-control input-sm "  required>
+                <option [selected]='true' value="undefined"  disabled >--Select country ---</option>
+                <option *ngFor="let country of countryInfo; let i = index" value="{{ country.country_id }}">{{country.country_name}}</option>
+             </select> 
+             <span style="color:red;" class="help-block" *ngIf="contryControl.invalid && contryControl.touched">
+              Country required
+               </span> 
+             </div>
+             <div class="col-md-6">
+             <label>State<strong style="color:red;">*</strong></label>
+             <select [(ngModel)]= "mstate" name="mstate" (change)="onChangeState($event.target.value)" #stateControl="ngModel" required class="form-control input-sm ">
+              <option selected value="undefined" disabled >--Select State--</option>
+              <option *ngFor="let state of stateInfo; let j = index" value="{{ state.state_id }}">{{state.state_name}}</option>
+              </select>
+              <span style="color:red;" class="help-block" *ngIf="stateControl.invalid && stateControl.touched">
+                State required
+                 </span> 
+           </div>
+         </div>
+         <div class="clearfix"></div><br clear="all">
+   
+         <div class="row">
+           <div class="col-md-6">
+             <label>City<strong style="color:red;">*</strong></label>
+             <select [(ngModel)]= "mcity"  required name="mcity"  #cityControl="ngModel" class="form-control input-sm " >
+              <option selected value="undefined" disabled>--Select City--</option>
+            <option *ngFor="let city of cityInfo; let k = index" value="{{city.city_id}}">{{city.city_name}}</option>
+            </select> 
+            <span style="color:red;" class="help-block" *ngIf="cityControl.invalid && cityControl.touched">
+              City required
+               </span>
+           </div>
+           <div class="col-md-6">
+               <label>Pincode<strong style="color:red;">*</strong></label>
+             <input type="text" pattern="^[1-9][0-9]{5}$" [(ngModel)]= "pincode" name="pincode" placeholder="Enter pin" required #pinControl="ngModel"  class="span3">
+             <span style="color:red;" class="help-block" *ngIf="pinControl.invalid && pinControl.touched">
+              Must be a valid six digit pin Number
+          </span>
+             </div>
+         </div>
+   
+         <div class="row">
+             <div class="col-md-6">
+              <label>Nationality<strong style="color:red;">*</strong></label>
+                              <select [(ngModel)]="nationality" required #nationalityControl="ngModel" required  name="nationality"  class="form-control span3">
+                                  <option selected value="undefined" disabled>--Select Nationality--</option>
+                                  <option value="Haitian">Haitian</option>
+                                  <option value="Honduran">Honduran</option>
+                                  <option value="Hungarian">Hungarian</option>
+                                  <option value="Icelandic">Icelandic</option>
+                                  <option value="Indian">Indian</option>
+                                  <option value="Indonesian">Indonesian</option>
+                                  <option value="Iranian">Iranian</option>
+                                  <option value="Iraqi">Iraqi</option>
+                                  <option value="Irish">Irish</option>
+                                  <option value="Israeli">Israeli</option>
+                                  <option value="Italian">Italian</option>
+                                  <option value="Jamaican">Jamaican</option>
+                                  <option value="Japanese">Japanese</option>
+                                  <option value="Jordanian">Jordanian</option>
+                                  <option value="Kenyan">Kenyan</option>
+                                  <option value="Korean">Korean</option>
+                                  <option value="Kuwaiti">Kuwaiti</option>
+                                  <option value="Lao">Lao</option>
+                                  <option value="Latvian">Latvian</option>
+                                  <option value="Lebanese">Lebanese</option>
+                                  <option value="Libyan">Libyan</option>
+                                  <option value="Lithuanian">Lithuanian</option>
+                                  <option value="Malaysian">Malaysian</option>
+                                  <option value="Malian">Malian</option>
+                                  <option value="Maltese">Maltese</option>
+                                  <option value="Mexican">Mexican</option>
+                                  <option value="Mongolian">Mongolian</option>
+                                  <option value="Moroccan">Moroccan</option>
+                                  <option value="Mozambican">Mozambican</option>
+                                  <option value="Namibian">Namibian</option>
+                                  <option value="Nepalese">Nepalese</option>
+                                  <option value="New Zealand">New Zealand</option>
+                                  <option value="Nicaraguan">Nicaraguan</option>
+                                  <option value="Nigerian">Nigerian</option>
+                                  <option value="Norwegian">Norwegian</option>
+                                  <option value="Pakistani">Pakistani</option>
+                                  <option value="Panamanian">Panamanian</option>
+                                  <option value="Paraguayan">Paraguayan</option>
+                                  <option value="Peruvian">Peruvian</option>
+                                  <option value="Philippine">Philippine</option>
+                                  <option value="Polish">Polish</option>
+                                  <option value="Portuguese">Portuguese</option>
+                                  <option value="Romanian">Romanian</option>
+                                  <option value="Russian">Russian</option>
+                                  <option value="Salvadorian">Salvadorian</option>
+                                  <option value="Saudi">Saudi</option>
+                                  <option value="Scottish">Scottish</option>
+                                  <option value="Senegalese">Senegalese</option>
+                                  <option value="Serbian">Serbian</option>
+                                  <option value="Singaporean">Singaporean</option>
+                                  <option value="Slovak">Slovak</option>
+                                  <option value="South African">South African</option>
+                                  <option value="Spanish">Spanish</option>
+                                  <option value="Sri Lankan">Sri Lankan</option>
+                                  <option value="Sudanese">Sudanese</option>
+                                  <option value="Swedish">Swedish</option>
+                                  <option value="Swiss">Swiss</option>
+                                  <option value="Syrian">Syrian</option>
+                                  <option value="Taiwanese">Taiwanese</option>
+                                  <option value="Tajikistani">Tajikistani</option>
+                                  <option value="Thai">Thai</option>
+                                  <option value="Tongan">Tongan</option>
+                                  <option value="Tunisian">Tunisian</option>
+                                  <option value="Turkish">Turkish</option>
+                                  <option value="Ukrainian">Ukrainian</option>
+                                  <option value="Uruguayan">Uruguayan</option>
+                                  <option value="Venezuelan">Venezuelan</option>
+                          </select>
+                          <span style="color:red;" class="help-block" *ngIf="nationalityControl.invalid && nationalityControl.touched">
+                              Nationality required
+                             </span>
+             </div>
+         </div>
+         <div  *ngIf="errMsg" class="red-text center error-message" style="text-align: center;font-size: 15px;color:red;">
+          Please fill valid data in the required fields
+          </div>
+         <div class="clearfix"></div><br clear="all">
+           
+           <div class="row">
+             <div class="col-md-offset-4 col-md-4">
+             <button><i class="fa fa-sign-in" aria-hidden="true"> Update</i></button>
+           </div>
+           </div>
+       </form>
+   
+     </div>
+   </div>
+   </body> -->
+
+<!-- After Design -->
+
+   <!-- <div id="myCarousel" class="carousel slide">
+
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="../assets/images/samudramship.jpg" class="img-responsive">
+        <div class="container">
+          <div class="carousel-caption carousel-captionn">
+              <h1>Samudram Package</h1>
+            </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="container">
+
+
+        <div class="row tppdng">
+           <h3 class="main-hd">Profile Update</h3>
+          <div class="bor-green">
+            <form>
+              <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">First Name </label>
+                <input type="email" class="form-control " id="exampleInputEmail1" placeholder="First Name">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">Last Name</label>
+                <input type="password" class="form-control " id="exampleInputPassword1" placeholder="Last Name">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Email  </label>
+                <input type="email" class="form-control " id="exampleInputEmail1" placeholder="Email ">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">Mobile</label>
+                <input type="password" class="form-control " id="exampleInputPassword1" placeholder="Mobile">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">DOB   </label>
+                <input type="email" class="form-control " id="exampleInputEmail1" placeholder="DOB">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">Address </label>
+                <textarea class="form-control" placeholder="Address" rows="2"></textarea>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Country   </label>
+                <select class="form-control">
+                  <option>India</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">State </label>
+                <select class="form-control">
+                  <option>Kerala</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">City   </label>
+                <select class="form-control">
+                  <option>Trivandrum</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">Nationality </label>
+                <select class="form-control">
+                  <option>India</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">Pincode </label>
+                <input type="email" class="form-control " id="exampleInputEmail1" placeholder="Pincode">
+              </div>
+
+              <div class="form-group col-md-6">
+              </div>
+              <div class="clearfix"></div><br>
+              
+            <div class="text-center">
+              <div class="col-md-offset-4 col-md-3 ">
+                
+                <button type="submit" class="form-control update-btn btn btn-default"><i class="fa fa-sign-in" aria-hidden="true"></i> Update</button>
+              </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+        <br> <br> <br> <br>
+
+    </div>
+  </div> -->
+
+
+  <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="../assets/images/innerpagee.jpg" class="img-responsive">
+          <div class="container">
+            <div class="carousel-caption carousel-captionn">
+                <h1>My Account</h1>
+              </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="clearfix"></div><br>
+
+      <div class="container my-account-top">
+        <div class="row"><h1 class="hiddenn">My Account</h1></div>
+
+          <div class="row">
+           
+              <div class="col-md-12">
+                  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                      <h4 class="acnthd">Personal Info</h4>
+                      <div class="panel panel-default">
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                         
+
+                          <div class="panel-body">
+                              <form class="login-form" [formGroup]="profileUpdateForm" (ngSubmit)="onSubmit()">
+                                <div class="row">
+                                  <div class="col-sm-6">
+                                       <div class="form-group">
+                                          <label >First Name<strong style="color:red;">*</strong> </label>
+                                          <input type="text" pattern="[a-zA-Z]+" class="form-control" formControlName="firstName"  placeholder="First Name ">
+                                          <div *ngIf="isSubmitted && g.firstName.errors"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="g.firstName.errors.required">First name
+                                                                        is required
+                                                                    </div>
+                                                                    <div *ngIf="g.firstName.errors.pattern">Only
+                                                                        Alphabets are allowed
+                                                                    </div>
+                                          </div>
+                                        </div>
+                                  </div>
+  
+                                  <div class="col-sm-6">
+                                       <div class="form-group">
+                                          <label >Last Name<strong style="color:red;">*</strong> </label>
+                                          <input type="text"  pattern="[a-zA-Z]+" class="form-control" formControlName="lastName" placeholder="Last Name">
+                                          <div *ngIf="isSubmitted && g.lastName.errors"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="g.lastName.errors.required">Last name is
+                                                                        required</div>
+
+                                                                    <div *ngIf="g.lastName.errors.pattern"> Only
+                                                                        Alphabets are allowed
+                                                                    </div>
+                                          </div>
+                                        </div>
+                                  </div>
+                                </div>
+
+                                  <div class="row">
+                                   <div class="col-sm-6">
+                                       <div class="form-group">
+                                          <label >Email<strong style="color:red;">*</strong> </label>
+                                          <input type="text"  class="form-control" formControlName="email" placeholder="Email">
+                                          <div *ngIf="isSubmitted && g.email.errors"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="g.email.errors.required">Email is
+                                                                        required</div>
+                                                                    <div *ngIf="g.email.errors.email">Enter a valid
+                                                                        email
+                                                                    </div>
+                                          </div>
+                                        </div>
+                                  </div>
+                                   <div class="col-sm-6">
+                                       <div class="form-group">
+                                          <label >Mobile Number<strong style="color:red;">*</strong> </label>
+                                          <input type="text"  pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9,12}$" class="form-control" formControlName="mobile"  placeholder="Mobile Number ">
+                                          <div *ngIf="isSubmitted && g.mobile.errors"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="g.mobile.errors.required">Mobile Number is
+                                                                        required</div>
+                                                                    <div *ngIf="g.mobile.errors.pattern">Enter a valid
+                                                                        mobile number
+                                                                    </div>
+                                                                </div>
+                                        </div>
+                                  </div>
+                                </div>
+                                  <div class="row">
+                                  <div class="col-sm-6">
+                                      <div class="form-group">
+                                         <label >Date of Birth<strong style="color:red;">*</strong> </label>
+                                         <input class="form-control" style="float:none"   placeholder="dd/mm/yyyy" ngx-mydatepicker name="myDate"
+                                                                formControlName="dob" [options]="myOptions" #dp="ngx-mydatepicker"/>
+                                                 
+                                                         <span class="input-group-btn datepicker1">
+                                                             <button type="button" class="btn btn-pimary" (click)="clearDate()">
+                                                                 <i class="fa fa-remove" aria-hidden="true"></i>
+                                                             </button>
+                                                             <button type="button" class="btn btn-pimary" (click)="dp.toggleCalendar()">
+                                                                 <i class="fa fa-calendar" aria-hidden="true" ></i>
+                                                             </button>
+                                                         </span>
+                                                            <div *ngIf="isSubmitted && g.dob.errors"
+                                                                class="invalid-feedback">
+                                                                <div *ngIf="g.dob.errors.required &&!g.dob.errors.invalidDateFormat">Date of Birth is required
+                                                                </div>
+
+                                                                <div *ngIf="g.dob.errors.invalidDateFormat">Date of Birth should be valid
+                                                                    </div>
+                                                            </div>
+                                       </div>
+                                 </div>
+ <div class="col-sm-6">
+                              <div class="form-group">
+                                 <label >Nationality<strong style="color:red;">*</strong>  </label>
+                                 <ng-select formControlName="nationality" [clearable]="false" [items]="Ndata" bindLabel="nationality" bindValue="nationality" placeholder="Select Nationality">
+                                                </ng-select>
+                                                <div *ngIf="isSubmitted && g.nationality.errors"
+                                   class="invalid-feedback">
+                                   <div *ngIf="g.nationality.errors.required">Nationality is
+                                       required</div>
+   </div>
+                               </div>
+                         </div>
+                                 
+                                </div>
+                                   
+                                 <div class="row">
+                                  <div class="col-sm-6">
+                                      <div class="form-group">
+                                         <label>Country</label>
+                                         <ng-select formControlName="country" [items]="countryInfo"
+                                                    bindLabel="country_name" (change)="getState($event)" bindValue="country_id" [clearable]="false"
+                                                    placeholder="Select Country"
+                                                   >
+                                                </ng-select>
+                                                <div *ngIf="isSubmitted && g.country.errors"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="g.country.errors.required">Country is
+                                                                        required</div>
+                                    </div>
+                                       </div>
+                                 </div>
+
+                                 <div class="col-sm-6">
+                                    <div class="form-group">
+                                       <label>State(Select Country First)</label>
+                                       <ng-select formControlName="state" [items]="stateInfo"
+                                       bindLabel="state_name" (change)="getCity($event)" [clearable]="false" bindValue="state_id"
+                                       placeholder="Select State"
+                                      >
+                                   </ng-select>
+                                   <div *ngIf="isSubmitted && g.state.errors"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="g.state.errors.required">State is
+                                                                        required</div>
+                                    </div>
+                                     </div>
+                               </div>
+                              </div>
+
+                               <div class="row">
+                               <div class="col-sm-6">
+                                  <div class="form-group">
+                                     <label >City (Select State First) </label>
+                                     <ng-select formControlName="city" [items]="cityInfo"
+                                                    bindLabel="city_name" [clearable]="false" bindValue="city_id"
+                                                    placeholder="Select City"
+                                                   >
+                                                </ng-select>
+                                                <div *ngIf="isSubmitted && g.city.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="g.city.errors.required">City is
+                                                    required</div>
+                </div>
+                                   </div>
+                             </div>
+
+                             <div class="col-sm-6">
+                                <div class="form-group">
+                                   <label >Pincode  </label>
+                                   <input type="text" pattern="^[1-9][0-9]{5}$" class="form-control" formControlName="pincode"  placeholder="Pincode ">
+                                   <div *ngIf="isSubmitted && g.pincode.errors"
+                                   class="invalid-feedback">
+                                   <!-- <div *ngIf="g.pincode.errors.required">Pincode is
+                                       required</div> -->
+                                       <div *ngIf="g.pincode.errors.pattern">Enter a valid
+                                        Pincode
+                                    </div>
+   </div>
+                                 </div>
+                           </div>
+
+                          </div>
+                            
+                        <div class="row">
+                        <div class="col-sm-12">
+                                     <div class="form-group">
+                                     <label>Address</label>
+                                     <textarea class="form-control txt-height"  maxlength="150" formControlName="address"  name="address" placeholder="House Name/NO" rows="2"></textarea>
+                                     <div *ngIf="isSubmitted && g.address.errors"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="g.address.errors">Address is
+                                                                        required</div>
+                                    </div>
+                                     </div>
+                                 </div>
+                                 </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div style="text-align: center;">
+                                    <button type="submit" class="btn btn-default my-profile">Update</button>
+                               </div>
+                          </div>
+                        </div>   
+                                </form>
+                                
+                            </div>
+                        </div>
+                      </div>
+                      <!--<div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                        
+                            <a class="collapsed" (click)="resetchange()" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <h4 class="panel-title">
+                                Change Password
+                              </h4>
+                            </a>
+                          
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                <form class="login-form" [formGroup]="ChangePassForm" (ngSubmit)="submit()">
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                               <label >Old Password<strong style="color:red;">*</strong> </label>
+                                               <input type="password" name="oldpassword" formControlName="oldpassword" class="form-control"  placeholder="Old Password ">
+                                               <div *ngIf="submitted && f.oldpassword.errors" class="invalid-feedback">
+                                                  <div *ngIf="f.oldpassword.errors.required">Old Password is required</div>
+                                              </div>
+                                             </div>
+                                       </div>
+       
+                                       <div class="col-sm-4">
+                                            <div class="form-group">
+                                               <label >New Password<strong style="color:red;">*</strong>  </label>
+                                               <input type="password" name="password"  pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" formControlName="password" class="form-control"  placeholder="New Password ">
+                                               <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                                  <div *ngIf="f.password.errors.required">New Password is required</div>
+                                                  <div *ngIf="f.password.errors.pattern">New Password (UpperCase, LowerCase, Number/SpecialChar and min 6 Chars)</div>
+                                              </div>
+                                             </div>
+                                       </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                               <label >Confirm New Password<strong style="color:red;">*</strong>  </label>
+                                               <input type="password" name="confirmPassword" formControlName="confirmPassword" class="form-control"  placeholder="Confirm New Password ">
+                                               <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                                                  <div *ngIf="f.confirmPassword.errors.required">Confirm New Password is required</div>
+                                                  <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                                              </div>
+                                             </div>
+                                       </div>
+                                    </div>
+                                  </div>
+                                  
+                                  
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                        <div style="text-align: center;">
+                                           <button type="submit" class="btn btn-default">Submit</button>&nbsp;
+                                            <a (click)="resetchange()" type="button" class="btn btn-danger">Cancel</a>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                </form>
+                                 
+                              </div>
+                        </div>
+                      </div>-->
+           
+                    </div>
+              </div>
+          </div>
+      </div>
+
+<div class="clearfix"></div><br><br>
+</div>

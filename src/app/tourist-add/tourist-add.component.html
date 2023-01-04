@@ -1,0 +1,490 @@
+<div id="myCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../assets/images/samudramship.jpg" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption carousel-captionn">
+          <h1>Tourist Details</h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="clearfix"></div><br>
+
+
+
+
+  <div class="container">
+    <div class="row"><h1 class="hiddenn">Tourist Details</h1></div>
+     <form [formGroup]="traveldetailForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="formp"><b>Please enter Primary Member Details:</b> </p>
+          <div class="row">
+            <div class="formd1">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Full Name <strong style="color:red;">*</strong> </label>
+                      <input type="text" pattern="[a-zA-Z][a-zA-Z - ]*" formControlName="fullName" class="form-control"
+                        id="exampleInputEmail1" placeholder="Full Name">
+                      <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
+                        <div *ngIf="f.fullName.errors.required">Full Name 
+                          is required
+                        </div>
+                        <div *ngIf="f.fullName.errors.pattern">Only
+                          Alphabets are allowed
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail2">Guardian Name  </label>
+                      <input pattern="[a-zA-Z][a-zA-Z - ]*" type="text" formControlName="guardianName"
+                        class="form-control" id="exampleInputEmail2" placeholder="Guardian Name ">
+                      <div *ngIf="submitted && f.guardianName.errors" class="invalid-feedback">
+                        <div *ngIf="f.guardianName.errors.required">Guardian
+                          is required
+                        </div>
+                        <div *ngIf="f.guardianName.errors.pattern">Only
+                          Alphabets are allowed
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail3">Permanent Address </label>
+                      <textarea class="form-control" formControlName="address" maxlength="150" name="address"
+                        placeholder="House Name/NO" rows="2"></textarea>
+                      <!-- <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                              <div *ngIf="f.address.errors.required">Address is
+                                  required</div>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail4">Email<strong style="color:red;">*</strong> </label>
+                      <input type="email" formControlName="email" class="form-control" id="exampleInputEmail4"
+                        placeholder="Email">
+                      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is
+                          required</div>
+                        <div *ngIf="f.email.errors.email">Enter a valid
+                          Email
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-12">
+
+
+
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail5">Mobile Number <strong style="color:red;">*</strong> </label>
+                      <input pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9,12}$" type="text"
+                        formControlName="mobile" class="form-control" id="exampleInputEmail5"
+                        placeholder="Mobile Number">
+                      <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                        <div *ngIf="f.mobile.errors.required">Mobile Number is
+                          required</div>
+                        <div *ngIf="f.mobile.errors.pattern">Enter a valid
+                          mobile number
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail6">Nationality <strong style="color:red;">*</strong> </label>
+                      <ng-select formControlName="nationality" [clearable]="false" (change)="getNationality($event)"
+                        [items]="Ndata" bindLabel="nationality" bindValue="nationality"
+                        placeholder="Select Nationality">
+                      </ng-select>
+                      <div *ngIf="submitted && f.nationality.errors" class="invalid-feedback">
+                        <div *ngIf="f.nationality.errors.required">
+                          Nationality is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail7">Gender <strong style="color:red;">*</strong> </label>
+                      <ng-select formControlName="gender" [items]="genderDetails" bindLabel="gname" bindValue="gname"
+                        placeholder="Select Gender">
+                      </ng-select>
+                      <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                        <div *ngIf="f.gender.errors.required">
+                          Gender is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail8">Age <strong style="color:red;">*</strong> </label>
+                      <input pattern="[0-9]+" type="text" formControlName="dob" class="form-control"
+                        id="exampleInputEmail8" placeholder="Age">
+
+                      <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                        <div *ngIf="f.dob.errors.required">
+                          Age is required
+                        </div>
+                        <div *ngIf="!f.dob.errors.required && f.dob.errors.minNumber &&! f.dob.errors.pattern">
+                          Age Should be Between 2 to 100
+                        </div>
+                        <div *ngIf="!f.dob.errors.required && f.dob.errors.maxNumber &&! f.dob.errors.pattern">
+                          Age Should be Between 2 to 100
+                        </div>
+                        <div *ngIf="!f.dob.errors.required && f.dob.errors.pattern">
+                          Accepts only Numbers
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-12">
+
+
+
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail9">Food Preference <strong style="color:red;">*</strong> </label>
+                      <ng-select formControlName="foodpreference" [items]="foodpre" bindLabel="fname" bindValue="fname"
+                        placeholder="Select Food Preference">
+                      </ng-select>
+                      <div *ngIf="submitted && f.foodpreference.errors" class="invalid-feedback">
+                        <div *ngIf="f.foodpreference.errors.required">
+                          Food Preference is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail11">Country </label>
+                      <ng-select formControlName="country" [items]="countryInfo" bindLabel="country_name"
+                        (change)="getState($event)" bindValue="country_id" [clearable]="false"
+                        placeholder="Select Country">
+                      </ng-select>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail12">State </label>
+                      <ng-select formControlName="state" [items]="stateInfo" bindLabel="state_name"
+                        (change)="getCity($event)" [clearable]="false" bindValue="state_id" placeholder="Select State">
+                      </ng-select>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail13">City </label>
+                      <ng-select formControlName="city" [items]="cityInfo" bindLabel="city_name" [clearable]="false"
+                        bindValue="city_id" placeholder="Select City">
+                      </ng-select>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+
+
+
+                  <div *ngIf="isPassport" class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail14">Passport No <strong style="color:red;">*</strong> </label>
+                      <input pattern="^(?!^0+$)[a-zA-Z0-9]{3,20}$" type="text" formControlName="passportNo"
+                        class="form-control" id="exampleInputEmail14" placeholder="Passport Number">
+                      <div *ngIf="submitted && f.passportNo.errors" class="invalid-feedback">
+                        <div *ngIf="f.passportNo.errors.required">Passport No is
+                          required</div>
+                        <div *ngIf="f.passportNo.errors.pattern">Enter a valid
+                          Passport No
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+
+
+
+
+              <!-- </form> -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- <div class="row">
+        <div class="col-md-12">
+          <div class="pull-right">
+            <button type="submit" class="btn btn-default">Add</button>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="clearfix"></div><br>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div formArrayName="itemRows">
+            <p *ngIf="secondaryNumber>1" class="formp"><b>Please enter Secondary Members Details:</b> </p>
+
+            <div *ngFor="let itemrow of formArr.controls; let i=index" [formGroupName]="i" class="row">
+              <div class="formd1">
+                <!-- <form> -->
+                <div class="row">
+                  <div class="col-md-12">
+
+
+
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail171">Full Name <strong style="color:red;">*</strong> </label>
+                        <input pattern="[a-zA-Z][a-zA-Z - ]*" type="text" formControlName="ibd_name" class="form-control"
+                          id="exampleInputEmail17" placeholder="Full Name ">
+                        <div
+                          *ngIf="submitted && traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_name.errors"
+                          class="invalid-feedback">
+                          <div
+                            *ngIf="traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_name.errors.required">
+                            Full Name is required</div>
+                          <div
+                            *ngIf="traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_name.errors.pattern">
+                            Only Alphabets Allowed</div>
+                          <!-- <div *ngIf="traveldetailForm.controls['itemRows'].controls[i].controls.spcm_seat.errors.maxNumber ">No of seats should be lesser than 500</div> -->
+
+
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail18">Gender <strong style="color:red;">*</strong> </label>
+                        <ng-select formControlName="ibd_gender" [items]="genderDetails" bindLabel="gname"
+                          bindValue="gname" placeholder="Select Gender">
+                        </ng-select>
+
+                        <div
+                          *ngIf="submitted && traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_gender.errors"
+                          class="invalid-feedback">
+                          <div
+                            *ngIf="traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_gender.errors.required">
+                            Gender is required</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail191">Age <strong style="color:red;">*</strong> </label>
+                        <input pattern="[0-9]+" type="text" formControlName="ibd_age" class="form-control"
+                          id="exampleInputEmail19" placeholder="Age  ">
+
+
+                        <div
+                          *ngIf="submitted && traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_age.errors"
+                          class="invalid-feedback">
+                          <div
+                            *ngIf="traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_age.errors.required">
+                            Age is required
+                          </div>
+                          <div
+                            *ngIf="!traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_age.errors.required && traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_age.errors.minNumber &&! traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_age.errors.pattern">
+                            Age Should be Between 2 to 100
+                          </div>
+                          <div
+                            *ngIf="!traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_age.errors.required && traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_age.errors.maxNumber &&! traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_age.errors.pattern">
+                            Age Should be Between 2 to 100
+                          </div>
+                          <div
+                            *ngIf="!traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_age.errors.required && traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_age.errors.pattern">
+                            Accepts only Numbers
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail21">Nationality <strong style="color:red;">*</strong> </label>
+                        <ng-select formControlName="ibd_nationality" (change)="nationalityCheck($event,i)" [items]="Ndata"
+                          bindLabel="nationality" [clearable]="false" bindValue="nationality"
+                          placeholder="Select Nationality">
+                        </ng-select>
+
+                        <div
+                          *ngIf="submitted && traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_nationality.errors"
+                          class="invalid-feedback">
+                          <div
+                            *ngIf="traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_nationality.errors.required">
+                            Nationality is required</div>
+                        </div>
+
+                      </div>
+                    </div>
+
+
+
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-12">
+
+
+
+
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail31">Food Preference <strong style="color:red;">*</strong> </label>
+                        <ng-select formControlName="ibd_food_pref" [items]="foodpre" bindLabel="fname"
+                          bindValue="fname" placeholder="Select Food Preference">
+                        </ng-select>
+                        <div
+                          *ngIf="submitted && traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_food_pref.errors"
+                          class="invalid-feedback">
+                          <div
+                            *ngIf="traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_food_pref.errors.required">
+                            Food Preference is required</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail41">Country </label>
+                        <ng-select formControlName="s_country" [items]="countryInfo" bindLabel="country_name"
+                          (change)="getStateSec($event,i)" bindValue="country_id" [clearable]="false"
+                          placeholder="Select Country">
+                        </ng-select>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail51">State </label>
+                        <ng-select formControlName="s_state" [items]="stateInfo" bindLabel="state_name"
+                          (change)="getCitySec($event,i)" [clearable]="false" bindValue="state_id"
+                          placeholder="Select State">
+                        </ng-select>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail61">City </label>
+                        <ng-select formControlName="city_id" [items]="cityInfo" bindLabel="city_name" [clearable]="false"
+                          bindValue="city_id" placeholder="Select City">
+                        </ng-select>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-12">
+
+
+
+                    <div *ngIf="this.countryCheck[i]==1" class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail71">Passport No <strong style="color:red;">*</strong> </label>
+                        <input pattern="^(?!^0+$)[a-zA-Z0-9]{3,20}$" type="text" formControlName="ibd_passport"
+                          class="form-control" id="exampleInputEmail71" placeholder="Passport Number">
+                        <div
+                          *ngIf="submitted && traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_passport.errors"
+                          class="invalid-feedback">
+                          <div
+                            *ngIf="traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_passport.errors.required">
+                            Passport No is required</div>
+                          <div
+                            *ngIf="traveldetailForm['controls']['itemRows']['controls'][i]['controls'].ibd_passport.errors.pattern">
+                            Enter a valid
+                            Passport No</div>
+                          <!-- <div *ngIf="traveldetailForm.controls['itemRows'].controls[i].controls.spcm_seat.errors.maxNumber ">No of seats should be lesser than 500</div> -->
+
+
+                        </div>
+                        <!-- <div *ngIf="submitted && f.s_passportNo.errors"
+                      class="invalid-feedback">
+                      <div *ngIf="f.s_passportNo.errors.required">Passport No is
+                          required</div>
+                      <div *ngIf="f.s_passportNo.errors.pattern">Enter a valid
+                        Passport No
+                      </div>
+                  </div> -->
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+
+
+                <!-- </form> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div><br>
+
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="pull-right">
+            <button type="submit" class="btn btn-default">Confirm</button>&nbsp;
+            <!-- <button (click)="reset()" type="button" class="btn btn-danger">Clear All </button> -->
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="clearfix"></div><br>
+
+</div>

@@ -1,0 +1,119 @@
+<!-- <div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="../assets/images/innerpagee.jpg" class="img-responsive">
+        <div class="container">
+          <div class="carousel-caption carousel-captionn">
+            <h1>Payment Success</h1>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="clearfix"></div>
+
+    <section class="wht-box">
+      <div class="container">
+          <div class="row">
+            <div id="no-more-tables">
+                <table class="col-md-12 table-bordered table-striped table-condensed cf">
+                    <thead class="cf btr">
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Date</th>
+                            <th class="numeric">Amount</th>
+                            <th class="numeric">Transaction ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="Code">{{successData.booking_id}}</td>
+                            <td data-title="Company">{{successData.transaction_date| date:'dd MMM yyyy'}}</td>
+                            <td data-title="Price" class="numeric">{{successData.amount}}</td>
+                            <td data-title="Change" class="numeric">{{successData.transaction_id}}</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+      </div>
+      <div class="row">
+          <div>
+            <h1 class="thank">Thank You</h1>
+            <p class="text-center">Our Travel Agent will contact you shortly.</p>
+        </div>
+      </div>
+    </div>
+    </section>
+  
+  
+    <div class="clearfix"></div><br><br>
+  </div> -->
+
+  <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="../assets/images/innerpagee.jpg" class="img-responsive">
+          <div class="container">
+            <div class="carousel-caption carousel-captionn">
+              <h1>Payment Success</h1>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    
+      <div class="clearfix"></div>
+  
+      <section class="wht-box">
+        <div class="container">
+          <div class="row"><h1 class="hiddenn">Payment Success</h1></div>
+
+          <div class="outershadw">
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="paymentmain"  src="../assets/images/payment1.png">
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="paid">
+                          <div>
+                        
+                           <h2><b>₹{{amount}}</b></h2>
+                           <h4>Paid Succesfully</h4>
+                           <div>
+                              <img class="paidimg paids" src="../assets/images/paid.svg">
+                          </div>
+                        </div>
+                      </div>
+                    </div>  
+          
+                    <div class="row">
+                      <div class="orders">
+                        <h2>Booking ID : {{bookingId}}</h2>
+                        <H4>Transaction ID : {{tranId}}</H4>
+                        <H4>Transaction Date : {{date| date:'dd MMM yyyy'}}</H4>
+                      </div>
+                    </div>
+             
+                <div class="row">
+                    <div class="trans">
+                    
+                      <h1 class="thank">Thank You</h1>
+                      <!-- <p class="text-center"><b>Our Travel Agent will contact you shortly.</b></p> -->
+                      <!-- <p class="text-center">Please check your email for transaction details</p> -->
+                      <p class="text-center"><b>GoL Team will contact you shortly through email/SMS</b></p>
+                      <button (click)="goHome()" class="slider-btn continue" type="button"> View your Reservations</button>
+                  </div>
+                </div>
+                </div>
+            </div>
+            
+      </div>
+    </div>
+      </section>
+    
+    
+      <div class="clearfix"></div><br><br>
+    </div>

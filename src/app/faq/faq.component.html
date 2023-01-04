@@ -1,0 +1,181 @@
+<div id="myCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../assets/images/faq.jpg" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption carousel-captionn">
+          <h1>Policies & FAQ</h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="clearfix"></div><br>
+<div class="container faq-data">
+  <div class="row">
+    <h1 class="hiddenn">Policies & FAQ</h1>
+  </div>
+
+  <div class="faq-support">
+    <nav class="nav-sidebar ">
+      <ul class="nav tabs">
+
+        <li class="active"><a href="#tab1" data-toggle="tab">Legal </a></li>
+        <li class=""><a href="#tab2" data-toggle="tab">FAQ</a></li>
+
+      </ul>
+    </nav>
+
+  </div>
+  <!-- tab content -->
+  <div class="faq-content">
+    <div class="tab-content">
+      <div class="tab-pane active text-style" id="tab1">
+        <h2>Legal</h2>
+        <div class="pxlr-club-faq">
+          <div class="content">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab">
+                  <h4 class="panel-title">
+                    <a (click)="privacy()" class="collapsed" role="button">Privacy policy
+                      <span *ngIf="!isPrivacy"><i class="pull-right fa fa-plus"></i></span>
+                      <span *ngIf="isPrivacy"><i class="pull-right fa fa-minus"></i></span>
+
+                    </a>
+                  </h4>
+                </div>
+                <div *ngIf="isPrivacy" class="panel-collapse " role="tabpanel">
+                  <div class="panel-body pxlr-faq-body">
+                    <p style="text-align:justify;">GoL Travels Private Ltd. ("GOL" or "Us" or "We" or "Our") is a
+                      private limited company registered under the Companies Act, 2013 and having its registered office
+                      at Pallichal Road, Pyarry Junction, Thoppumpady, Cochin 682 005, Kerala, India.. GOL owns and
+                      operates a digital platform (including the website <a href="https://www.golakshadweep.com"
+                        target="_blank">www.golakshadweep.com</a> and a mobile app; collectively the "Platform") that
+                      promotes tourism and provides all-inclusive travel services to the Union Territory of Lakshadweep,
+                      India ("Territory").</p>
+                    <a style="margin: 0 25px;"  (click)="policy()">View More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab">
+                  <h4 class="panel-title">
+                    <a (click)="cancel()" class="collapsed" role="button">Cancellation and Refund <span
+                        *ngIf="!isCancel"><i class="pull-right fa fa-plus"></i></span>
+                      <span *ngIf="isCancel"><i class="pull-right fa fa-minus"></i></span>
+                    </a>
+                  </h4>
+                </div>
+                <div *ngIf="isCancel" class="panel-collapse " role="tabpanel">
+                  <div class="panel-body pxlr-faq-body">
+                    <h5>Cancellation Policy</h5>
+                    <ul>
+                      <li>10% cancellation charge will be deducted if the booking is cancelled 30 days before departure.
+                      </li>
+                      <li>25% cancellation charge will be deducted if the booking is cancelled between 29th to 7th days
+                        before departure.</li>
+                      <li>No refund if cancelled within 7 days before the departure.</li>
+                    </ul>
+                    <h5>Refund Policy</h5>
+                    <ul>
+                      <li>100% refund if the schedule is cancelled due to unfavourable weather conditions and/or other
+                        unexpected technical faults from our side. No damages/claims will be payable except money paid
+                        by them.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading" id="headingThree" role="tab">
+                  <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse"
+                      data-parent="#accordion" aria-expanded="false" aria-controls="collapseThree">Merchant terms and
+                      conditions <i class="pull-right fa fa-plus"></i></a></h4>
+                </div>
+                <div class="panel-collapse collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree">
+                  <div class="panel-body pxlr-faq-body">
+                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life
+                      accusamus terry richardson ad squid. 3 wolf moon officia
+                      aute,
+                      non cupidatat skateboard dolor brunch. Food truck quinoa
+                      nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                      aliqua
+                      put a bird on it squid single-origin coffee nulla assumenda
+                      shoreditch et. Nihil anim keffiyeh helvetica, craft beer
+                      labore
+                      wes anderson cred nesciunt sapiente ea proident. Ad vegan
+                      excepteur butcher vice lomo. Leggings occaecat craft beer
+                      farm-to-table, raw denim aesthetic synth nesciunt you
+                      probably
+                      haven't heard of them accusamus labore sustainable VHS.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <hr> -->
+
+      </div>
+      <div class="tab-pane text-style" id="tab2">
+        <h2>FAQ</h2>
+        <div class="pxlr-club-faq">
+          <div class="content">
+            <div *ngFor="let content of faqData;let i=index" class="panel-group" role="tablist">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a (click)="faqShow(i)" class="collapsed" role="button">{{content.category_name}}
+                      <span *ngIf="!content.isShow"><i class="pull-right fa fa-plus"></i> </span>
+                      <span *ngIf="content.isShow"><i class="pull-right fa fa-minus"></i> </span></a>
+                  </h4>
+                </div>
+                <div *ngIf="content.isShow">
+                  <div *ngFor="let faq of content.faq_list;let j=index" role="tabpanel">
+                    <div class="panel-body pxlr-faq-body">
+                      <div class="panel panel-default mt-pads">
+                        <div class="panel-heading ">
+                          <h4 class="panel-title">
+                            <a (click)="Show(i,j)" class="collapsed" role="button">{{faq.heading}}
+                              <span *ngIf="!faq.show"><i class="pull-right fa fa-plus"></i></span>
+                              <span *ngIf="faq.show"><i class="pull-right fa fa-minus"></i></span>
+
+                            </a>
+                          </h4>
+                        </div>
+                        <div *ngIf="faq.show">
+                          <div role="tabpanel">
+                            <div class="panel-body pxlr-faq-body content">
+                              <br>
+                              <p *ngIf="faq.subHeading!='NA'"><strong>{{faq.subHeading}}</strong></p>
+                              <p *ngIf="faq.subHeading=='NA'"></p>
+                              <p *ngIf="faq.content!='NA'">{{faq.content}}</p><br>
+                              <p *ngIf="faq.content=='NA'"></p>
+                              <p *ngIf="faq.is_email"><a href="mailto:{{faq.email}}" class="btn-default"
+                                  role="button">Send an email</a> </p><br>
+                              <!-- <hr>                      -->
+                              <!-- <h5>Cancellation</h5> <br>                     
+                <a  class="btn-default" role="button" href="#/singleIsland/3">Send An Email</a>              <br><br>                    -->
+                            </div>
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- <hr> -->
+
+      </div>
+    </div>
+  </div>
+</div>

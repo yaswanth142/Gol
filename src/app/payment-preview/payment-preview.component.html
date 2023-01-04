@@ -1,0 +1,384 @@
+<!-- <div id="myCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../../assets/images/innerpagee.jpg" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption carousel-captionn">
+          <h1>Payment Preview</h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="clearfix"></div><br>
+
+
+
+
+  <div class="container">
+
+
+    <div class="clearfix"></div><br>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="reserbg">
+          <div class="col-md-5">
+            <img class="img-responsive img-rounded" src="../../assets/images/3.jpg">
+          </div>
+          <div class="col-md-7" *ngFor="let item of paymentData;let i=index;">
+            <div class="col-md-12">
+              <b class="bigfnt">Payment Details</b>
+            </div>
+            <div class="col-md-4">
+              <div><b>Check-In :</b> {{item.journey_start_date}}</div>
+              <div><b>No of Adults :</b> {{item.adult_count}}</div>
+            </div>
+            <div class="col-md-4">
+              <div><b>Check-Out :</b> {{item.journey_end_date}}</div>
+              <div><b>No of Child :</b> {{item.child_count}}</div>
+            </div>
+            <div class="clearfix"></div><br>
+            <div class="col-md-6">
+              <div *ngIf="isDisplay=='true'">
+                <b>Class Type :</b>
+                <span *ngFor="let info of item.package_class; let j=index;let isLast=last">
+                  {{info.packageclass_name}}{{isLast?'':','}}
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div>&nbsp;</div>
+            </div>
+            <div class="clearfix"></div><br>
+            <div class="col-md-12">
+              <b class="bigfnt">Fare Breakdown</b>
+            </div>
+            <div>
+              <div class="col-md-4">
+                <b>Package Fare</b>
+              </div>
+              <div class="col-md-8">
+                <b class="red"><i class="fa fa-inr" aria-hidden="true"></i> {{item.base_fare}}</b>
+              </div>
+            </div>
+            <div>
+              <div class="col-md-4">
+                <b>GST</b>
+              </div>
+              <div class="col-md-8">
+                <b class="red"><i class="fa fa-inr" aria-hidden="true"></i> {{item.tax}}</b>
+              </div>
+            </div>
+
+            <div class="clearfix"></div><br>
+
+            <div>
+              <div class="col-md-4">
+                <b style=" font-size: 18px;">Grand Total : </b>
+              </div>
+              <div class="col-md-8">
+                <b class="costval"><i class="fa fa-inr" aria-hidden="true"></i> {{item.total_amount}}</b>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" (change)="changestaus($event)"> <a href="#/terms">I accept the terms & Conditions</a> 
+                </label>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix"></div><br>
+
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div  class="pull-right">
+          <button [disabled]="showButton"  type="submit" class="btn btn-default" >Pay Now </button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="clearfix"></div><br>
+  </div> -->
+
+
+<div id="myCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../../assets/images/innerpagee.jpg" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption carousel-captionn">
+          <h1>Payment Preview</h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="clearfix"></div><br>
+
+
+  <!-- <div class="container">
+           <div class="  col-md-4 pull-right">
+             <div class="row">
+               <div class="col-md-4">
+             <label>Currency:</label>
+            </div>
+            <div class="col-md-8">
+                <ng-select  [items]="currencyData" [(ngModel)]="currency"
+                bindLabel="cur_code" bindValue="cur_code"
+                placeholder="Select Currency"
+                (change)="selectcurrency($event)" [clearable]="false"
+              >
+            </ng-select>
+      </div>
+    </div>
+      </div>
+    </div> -->
+
+  <div class="container">
+    <div class="row">
+      <h1 class="hiddenn">Payment Preview</h1>
+    </div>
+
+
+    <div class="clearfix"></div><br>
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="reser-preview">
+          <div class="table-responsive">
+            <div id="no-more-tables">
+            <table class="table table-striped">
+              <thead class="thead-light">
+                <tr>
+                  <th>Booking Details</th>
+                  <th *ngIf="isDisplay=='false'">Property Name</th>
+                  <th *ngIf="isDisplay=='true'">Package Name</th>
+                  <th *ngIf="isDisplay=='false'">Check-in</th>
+                  <th *ngIf="isDisplay=='true'">Departure Date</th>
+                  <th *ngIf="isDisplay=='false'">Check-out</th>
+                  <th *ngIf="isDisplay=='true'">Arrival Date</th>
+                  <th>No of Adults</th>
+                  <th>No of Child</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-title="Booking Details">
+                    <div class="pay-preview-img">
+                      <img src="{{paymentData.thumb_path}}{{paymentData.property_img_url}}" class="img-responsive">
+                    </div>
+                  </td>
+                  <td *ngIf="isDisplay=='false'" data-title="Property Name">{{paymentData.property_name}} </td>
+                  <td *ngIf="isDisplay=='true'" data-title="Package Name">{{paymentData.property_name}} </td>
+
+                  <td *ngIf="isDisplay=='false'" data-title="Check-in">{{paymentData.journey_start_date | date:'dd MMM yyyy'}}</td>
+                  <td *ngIf="isDisplay=='true'" data-title="Departure Date">{{paymentData.journey_start_date | date:'dd MMM yyyy'}}</td>
+
+                  <td *ngIf="isDisplay=='false'" data-title="Check-out">{{paymentData.journey_end_date  | date:'dd MMM yyyy'}}</td>
+                  <td *ngIf="isDisplay=='true'" data-title="Arrival Date">{{paymentData.journey_end_date  | date:'dd MMM yyyy'}}</td>
+
+
+                  <td data-title="No of Adults">{{paymentData.adult_count}}</td>
+                  <td data-title="No of Child">{{paymentData.child_count}}</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="col-md-6"></div>
+    <div class="col-md-6 totol-amou">
+      <form [formGroup]="paymentForm" (ngSubmit)="initPay()">
+        <div *ngIf="paymentData.paid_amount=='0.00'" class="col-md-6 col-xs-6">
+          <b>Base Fare</b>
+        </div>
+        <div *ngIf="paymentData.paid_amount=='0.00'" class="col-md-6 col-xs-6">
+          <b class="red"><i class="fa fa-inr" aria-hidden="true"></i> {{paymentData.base_fare}}</b>
+        </div>
+        <div *ngIf="paymentData.offer_amount!=0.00 && paymentData.paid_amount=='0.00'">
+
+          <div class="col-md-6 col-xs-6">
+            <b>Offer Amount</b>
+          </div>
+          <div class="col-md-6 col-xs-6">&nbsp;
+            <b class="red">
+              <!-- <span *ngIf="off_type">+</span> -->
+              {{paymentData.offer_amount}} (<i class="fa fa-inr" aria-hidden="true"></i>)</b>
+          </div>
+        </div>
+
+        <div *ngIf="paymentData.tax!=0.00  && paymentData.paid_amount=='0.00'">
+          <div class="col-md-6 col-xs-6">
+            <b>GST</b>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <b class="red"><i class="fa fa-inr" aria-hidden="true"></i> {{paymentData.tax}}</b>
+          </div>
+        </div>
+        <div *ngIf="paymentData.heritage_fee!='0.00' && paymentData.paid_amount=='0.00'">
+          <div class="col-md-6 col-xs-6">
+            <b>Heritage Fee</b>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <b class="red"><i class="fa fa-inr" aria-hidden="true"></i> {{paymentData.heritage_fee}}</b>
+          </div>
+        </div>
+        <div *ngIf="paymentData.transportation_fee!='0.00' && paymentData.paid_amount=='0.00'">
+          <div class="col-md-6 col-xs-8">
+            <b>Internal Transportation Mode</b>
+          </div>
+          <div class="col-md-6 col-xs-4">
+            <b class="red">{{paymentData.travel_mode}}</b>
+          </div>
+        </div>
+        <div *ngIf="paymentData.transportation_fee!='0.00' && paymentData.paid_amount=='0.00'">
+          <div class="col-md-6 col-xs-6">
+            <b>Transportation Fee</b>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <b class="red"><i class="fa fa-inr" aria-hidden="true"></i> {{paymentData.transportation_fee}}</b>
+          </div>
+        </div>
+
+        <div *ngIf="paymentData.shp_extra_cost!='0.00' && paymentData.paid_amount=='0.00' && isPack">
+          <div class="col-md-6 col-xs-6">
+            <b>Additional Package Charges</b>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <b class="red"><i class="fa fa-inr" aria-hidden="true"></i> {{paymentData.shp_extra_cost}}</b>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div>
+          <hr class="hr-br">
+          <div class="col-md-6 col-xs-6 grand-to">
+            <b *ngIf="paymentData.paid_amount=='0.00'" style=" font-size: 18px;">Grand Total : </b>
+            <b *ngIf="paymentData.paid_amount!='0.00'" style=" font-size: 18px;">Total Amount : </b>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <b class="costval"><i class="fa fa-inr" aria-hidden="true"></i> {{paymentData.total_amount}}</b>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div *ngIf="paymentData.paid_amount!='0.00'">
+          <div class="col-md-6 col-xs-6 grand-to">
+
+            <b style=" font-size: 18px;">Paid Amount : </b>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <b class="costval"><i class="fa fa-inr" aria-hidden="true"></i> {{paymentData.paid_amount}}</b>
+          </div>
+          <div class="clearfix"></div><br>
+          <div class="col-md-6 col-xs-6 grand-to">
+
+            <b style=" font-size: 18px;">Balance Amount : </b>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <b class="costval"><i class="fa fa-inr" aria-hidden="true"></i> {{paymentData.second_install}}</b>
+          </div>
+        </div>
+        <div *ngIf="partial">
+          <hr class="hr-br">
+          <!-- <div class="col-md-4 col-xs-8 grand-to">
+          <b style=" font-size: 18px;">Mode of payment:</b>
+          </div> -->
+          <div class="col-md-6 col-xs-6">
+            <input type="radio" id="mode1" value="fullPayment" class="check" formControlName="payMode"
+              (change)="handleChange($event)"> Full Payment
+
+          </div>
+          <div class="col-md-6 col-xs-6 grand-to">
+            <input type="radio" id="mode2" value="partialPayment" class="check" formControlName="payMode"
+              (change)="handleChangeSecond($event)"> Partial Payment<br> 
+              ({{paymentData.install_percent}}% of Grand Total)
+          </div>
+          <div class="col-md-12">
+            <div *ngIf="submitted && f.payMode.errors" class="invalid-feedback">
+              <div class="" *ngIf="f.payMode.errors.required">This field is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="partialAmount">
+          <hr class="hr-br">
+          <div class="col-md-6 col-xs-6 grand-to">
+            <b style=" font-size: 18px;">Payable Amount:</b>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <b class="costval"><i class="fa fa-inr" aria-hidden="true"></i> {{paymentData.first_install}}</b>
+          </div>
+        </div>
+        <hr class="hr-br">
+        <div class="col-md-12">
+          <div class="checkbox terms ">
+            <label>
+              <input (click)="accept($event)" formControlName="termsValue" type="checkbox" style="cursor: pointer;">I have read and
+              agree to
+              the
+              <a (click)="terms()"> Terms & Conditions</a>
+            </label>
+            <div *ngIf="submitted && !isValid" class="invalid-feedback">
+              <div *ngIf="!isValid" class="partialdngr">This field is required
+              </div>
+            </div>
+          </div>
+
+          <div class="pay-fil">
+
+
+            <!-- <form #form action="http://192.168.1.79:5000/api/v1/payment_management" method="POST"> -->
+            <!-- <script    src="https://checkout.razorpay.com/v1/checkout.js" 
+                           data-key="rzp_test_Lv61L3wlqyvAfE" 
+                            Enter the Key ID generated from the Dashboard 
+                              data-amount="50000"
+                               Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or INR 500.  
+                                 data-currency="INR"  
+                                   data-order_id="order_DfjBm5skllany1"
+                                      data-buttontext="Pay with Razorpaypppp"  
+                                        data-name="Acme Corp"  
+                                          data-description="A Wild Sheep Chase is the third novel by Japanese author Haruki Murakami"  
+                                            data-image="https://example.com/your_logo.jpg" 
+                                               data-prefill.name="test kefi"    data-prefill.email="test@yopmail.com" 
+                                                  data-prefill.contact="9999999999"   
+                                                   data-theme.color="#F37254">
+                                      </script> -->
+            <!-- <input type="hidden" 
+                                                   custom="Hidden Element" name="hidden"> -->
+            <button *ngIf="paymentData.paid_amount=='0.00'" type="button" class="btn btn-primary bok-de1"
+              (click)="modify()">Modify Booking </button> &nbsp;
+            <!-- <button  *ngIf="isDisplay=='true'" type="button" class="btn btn-primary" (click)="modifyPackage()">Modify </button> &nbsp; -->
+            <button type="submit" class="btn btn-default pull-right bok-de">Pay Now </button>
+            <!-- </form> -->
+
+          </div>
+
+
+        </div>
+      </form>
+    </div>
+
+    <div class="clearfix"></div><br>

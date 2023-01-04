@@ -1,0 +1,164 @@
+<div id="myCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../assets/images/innerpagee.jpg" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption carousel-captionn">
+          <h1>Contact Us</h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="clearfix"></div>
+  <section class="contact-section">
+<div class="container">
+  <div class="row"><h1 class="hiddenn">Contact Us</h1></div>
+  <div class="row">
+    <div class="col-md-4">
+        <div class="contact-add">
+            <div class="contact-icon">
+              <img src="../assets/images/phone-call.svg">
+            </div>
+            <div class="contact-cont">
+            <h3>Contact</h3>
+            <p><span> 0484 2959023 </span>  </p>
+            <p><span> +91 9778 50 96 29 </span></p>
+            <p><span> +91 9778 38 95 92 </span></p>
+            </div>
+        </div>
+    </div>
+     <div class="col-md-4">
+        <div class="contact-add">
+            <div class="contact-icon">
+              <img src="../assets/images/location.svg">
+            </div>
+            <div class="contact-cont">
+            <h3>Address</h3>
+            <p>GoL Travels Private Limited, Pallichal Road, Pyarry Jn., Thoppumpady,
+              <br>Cochin – 682 005, Kerala, India</p>
+            </div>
+        </div>
+    </div>
+     <div class="col-md-4">
+        <div class="contact-add">
+            <div class="contact-icon">
+              <img src="../assets/images/send1.svg">
+            </div>
+            <div class="contact-cont">
+            <h3>Email</h3>
+            <p>info@golakshadweep.com</p>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+</section>
+<section _ngcontent-llq-c4=""><div _ngcontent-llq-c4="" class="container-fluid"><div _ngcontent-llq-c4="" class="row">
+    <iframe _ngcontent-llq-c4="" allowfullscreen="" frameborder="0" height="450" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d62871.86728720294!2d76.24983140877941!3d9.97618025855675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sGoL%20Travels%20Private%20Limited%2C%20Pallichal%20Road%2C%20Pyarry%20Jn.%2C%20Thoppumpady%2C%20Cochin%20%E2%80%93%20682%20005%2C%20Kerala%2C%20India!5e0!3m2!1sen!2sin!4v1575353330621!5m2!1sen!2sin" style="border:0;" width="100%"></iframe>
+  </div></div></section>
+<section>
+    <div class="container">
+      <div class="row">
+<div class="contact-from">
+      <h1>Get In Touch</h1>
+                    <form class="login-form" name="enquirysection" [formGroup]="enquiryForm" (ngSubmit)="onSubmit()">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Enquiry Type</label>
+                              <ng-select formControlName="enquiryVal" [items]="enquiryType" bindLabel="enq_type"
+                                bindValue="enq_type_id" placeholder="Select enquiry type" >
+                              </ng-select>
+                              <div *ngIf="isSubmitted && g.enquiryVal.errors" class="invalid-feedback">
+                                  <div *ngIf="g.enquiryVal.errors.required">Enquiry Type is required</div>
+                                  <!-- <div *ngIf="g.mobile.errors.pattern">Mobile No must be valid</div> -->
+                                </div>
+                            </div>
+                          </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">First Name </label>
+                              <input type="text" formControlName="firstname" pattern="[a-zA-Z]+" name="firstName"
+                                class="form-control" placeholder="First Name">
+                              <div *ngIf="isSubmitted && g.firstname.errors" class="invalid-feedback">
+                                <div *ngIf="g.firstname.errors.required">First Name is required</div>
+                                <div *ngIf="g.firstname.errors.pattern">Enter only alphabets</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Last Name </label>
+                              <input type="text" formControlName="lastname" pattern="[a-zA-Z]+" name="lastName"
+                                type="text" class="form-control" placeholder="Last Name">
+                              <div *ngIf="isSubmitted && g.lastname.errors" class="invalid-feedback">
+                                <div *ngIf="g.lastname.errors.required">Last Name is required</div>
+                                <div *ngIf="g.lastname.errors.pattern">Enter only alphabets</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email </label>
+                          <input type="text" formControlName="email" placeholder="Email" name="email"
+                            class="form-control">
+                          <div *ngIf="isSubmitted && g.email.errors" class="invalid-feedback">
+                            <div *ngIf="g.email.errors.required">Email is required</div>
+                            <div *ngIf="g.email.errors.email">Enter a valid email</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Mobile Number </label>
+                          <input type="text" formControlName="mobile"
+                            pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9,11}$" placeholder="Mobile No"
+                            name="mob" class="form-control">
+                          <div *ngIf="isSubmitted && g.mobile.errors" class="invalid-feedback">
+                            <div *ngIf="g.mobile.errors.required">Mobile Number is required</div>
+                            <div *ngIf="g.mobile.errors.pattern">Enter a valid mobile number</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Source</label>
+                          <ng-select formControlName="source" [items]="sourceInfo" bindLabel="source_name"
+                            bindValue="source_id" placeholder="How did you come to know about us?" >
+                          </ng-select>
+                          <div *ngIf="isSubmitted && g.source.errors" class="invalid-feedback">
+                              <div *ngIf="g.source.errors.required">Source is required</div>
+                              <!-- <div *ngIf="g.mobile.errors.pattern">Mobile No must be valid</div> -->
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Message </label>
+                          <textarea maxlength="500" (input)="charCout($event)" class="txt-height" formControlName="message" rows="3"
+                            placeholder="Enter your message"></textarea>
+                            <div *ngIf="!isMessage">Maximum 500 characters are allowed</div>
+                            <div *ngIf="isMessage">{{rem_char}} characters Left</div>
+                          <div *ngIf="isSubmitted && g.message.errors" class="invalid-feedback">
+                            <div *ngIf="g.message.errors.required">Message is required</div>
+                            <!-- <div *ngIf="g.mobile.errors.pattern">Mobile No must be valid</div> -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <button type="submit" class="btn btn-default con-btn"> Submit</button>&nbsp;
+                       
+                      </div>
+                    </form>
+                  </div>
+      </div>
+      </div>
+</section>
+
+  <div class="clearfix"></div>
+</div>

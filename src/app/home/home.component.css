@@ -1,0 +1,65 @@
+
+
+.slick-slider {
+    width: 90%;
+    margin: auto;
+    /* background: #fff; */
+  }
+   
+  .nav-btn {
+    height: 80px;
+    position: absolute;
+    width: 40px;
+    cursor: pointer;
+    top: 100px !important;
+  }
+  .slick-dots
+  {
+    display: none !important;
+  }
+   
+  /* .prev-slide.slick-disabled,
+  .next-slide.slick-disabled {
+    pointer-events: none;
+    opacity: 0.2;
+  }
+    */
+  .prev-slide {
+    /* background-image: url(/assets/images/money.png) no-repeat scroll 0 0 !important; */
+    left: -33px;
+  }
+   
+  .next-slide {
+    /* background: url(assets/images/nav-icon.png) no-repeat scroll -24px 0px; */
+    right: -33px;
+  }
+   
+  .prev-slide:hover {
+    background-position: 0px -53px;
+  }
+   
+  .next-slide:hover {
+    background-position: -24px -53px;
+  }
+  .datepicker1{
+    position: absolute;
+    right: 23px;
+    top: 10px;
+    }
+    .invalid-feedback{
+      color: rgb(230, 14, 14);  
+  }
+
+  .swal2-container {
+
+    z-index: 2000 !important;
+  }
+
+  .text-cptn a:hover {
+    color: #fff !important;
+    /* text-decoration: underline; */
+}
+
+.pkg{
+  /* height: 0px !important; */
+}

@@ -1,0 +1,17 @@
+/* @import "../../assets/css/login.css"; */
+.panel-title{
+    color: #000;
+}
+.invalid-feedback{
+    color: rgb(230, 14, 14);  
+}
+.ng-select .is-invalid {
+
+    border-color: rgb(216, 12, 12);
+}  
+.mar{
+    margin-top: 25px;
+}
+.bot{
+    margin-bottom: 15px;
+} 

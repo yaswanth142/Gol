@@ -1,0 +1,46 @@
+<div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="../assets/images/islands.jpg" class="img-responsive">
+        <div class="container">
+          <div class="carousel-caption carousel-captionn">
+              <h1>Lakshadweep Islands</h1>
+              <p class="main-title" style="text-align: center;margin-bottom: -34px;">Explore peaceful holidays and exciting water sports in these exotic coral Islands.
+                  <!-- Travel Card / Entry Permit required prior to travel* -->
+                </p>
+            </div>
+            
+        </div>
+      </div>
+
+    </div>
+
+    <div class="clearfix"></div><br><br>
+
+    <div class="container ils-top">
+      <div class="row"><h1 class="hiddenn">Lakshadweep Islands</h1></div>
+
+      <div class="row">
+        <div *ngFor="let data of islandData " class="col-sm-6 col-md-4">
+          <div class=" list-islands">
+            <div  class="stay-pak">
+            <img src={{imgpath}}{{data.island_image}} class="img-responsive" >
+          </div>
+            <div class="caption">
+              <h3 class="indfnt">{{data.island_name}}</h3>
+              <p>{{data.island_desc | slice:0:80}}<span *ngIf="data.island_desc.length>80">...</span></p>
+              <p><a (click)="singleIsland(data.island_id)" class="btn btn-default" role="button">View More</a></p>
+            </div>
+          </div>
+        </div>
+       
+
+        
+
+      </div>
+      <!-- <pagination-controls style="text-align:center;" (pageChange)="p = $event"></pagination-controls> -->
+     
+
+    </div>
+    <div class="clearfix"></div><br><br>
+  </div>

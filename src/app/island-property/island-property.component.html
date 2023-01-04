@@ -1,0 +1,408 @@
+<div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="../assets/images/islandStays.jpg" class="img-responsive">
+            <div class="container">
+                <div class="carousel-caption carousel-captionn">
+                    <h1>{{pname}}</h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="clearfix"></div><br>
+
+
+    <div class="container">
+        <div class="row">
+            <h1 class="hiddenn">{{pname}}</h1>
+        </div>
+    </div>
+    <!-- <div class="container">
+            <div class="row">
+                <form [formGroup]="stayingForm" (ngSubmit)="onSubmit()">
+                    <div class="search-bg">
+                        <div class="col-md-2 pt-3">
+                            <div class="form-group ">
+                                <input formControlName="startDate" name="startdate" type="date"
+                                    class="form-control search-form" id="exampleInputPassword1">
+                                <div *ngIf="isSubmitted && f.startDate.errors" class="invalid-feedback">
+                                    <div *ngIf="f.startDate.errors.required">*This field is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pt-3">
+                            <div class="form-group ">
+                                <input type="date" formControlName="returnDate" name="returndate"
+                                    class="form-control search-form" id="exampleInputPassword1">
+                                <div *ngIf="isSubmitted && f.returnDate.errors" class="invalid-feedback">
+                                    <div *ngIf="f.returnDate.errors.required">*This field is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pt-3">
+                          
+                            <div>
+                                <div class="input-group" id="adv-search">
+                                    <input type="text" class="form-control formbrdr formhight" formControlName="totalcount"
+                                        placeholder="{{totalcount}}" />
+                                    <div style="font-size: 4px;" class="input-group-btn">
+                                        <div class="btn-group" role="group">
+                                            <div class="dropdown dropdown-lg">
+                                                <button (click)="show()" type="button"
+                                                    class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                                    aria-expanded="false"><span class="caret"></span></button>
+                                                <div id="closediv" class="dropdown-menu dropdown-menu-right" role="menu"
+                                                    style="padding-top: 5px;">
+                                                    <div class="form-group">
+                                                        <div class="leftlable">
+                                                            <label for="filter" class="iconpdng">Adult</label>
+                                                        </div>
+                                                        <div class="leftlable">
+                                                            <ul class="listlabel">
+                                                                <li><i class="fa fa-minus-circle iconpdng"
+                                                                        (click)="removeItem()" aria-hidden="true"></i>
+                                                                </li>
+                                                                <li>
+                                                                  
+                                                                    <div class="fncl">{{amount}}</div>
+                                                                </li>
+                                                                <li><i class="fa fa-plus-circle iconpdng"
+                                                                        (click)="addItem()" aria-hidden="true"></i>
+                                                                </li>
+                                                               
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div>
+                                                        <div class="form-group">
+                                                            <div class="leftlable">
+                                                                <label for="filter" class="iconpdng">Child</label>
+                                                            </div>
+                                                            <div class="leftlable">
+                                                                <ul class="listlabel">
+                                                                    <li><i class="fa fa-minus-circle iconpdng"
+                                                                            (click)="removeItemChild()"
+                                                                            aria-hidden="true"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                       
+                                                                        <div class="fncl">{{amountChild}}</div>
+                                                                    </li>
+                                                                    <li><i class="fa fa-plus-circle iconpdng"
+                                                                            (click)="addItemChild()" aria-hidden="true"></i>
+                                                                    </li>
+                                                               
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <button type="button" (click)="applybutton()"
+                                                                class="btn newbtnc">Apply</button>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <button class="btn closebtn" type="button"
+                                                                (click)="closebutton()">close</button>
+                                                        </div>
+                                                        <p></p>
+                                                    </div>
+                                                    <div class="clearfix"></div><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   
+                        <div class="col-md-2 pt-3">
+                            <div class="form-group">
+                            
+                                <ng-select formControlName="island" [items]="islandInfo" class="selectHeight"
+                                    bindLabel="island_name" bindValue="island_id" placeholder="Select Island">
+                                </ng-select>
+                                <div *ngIf="isSubmitted && f.island.errors" class="invalid-feedback">
+                                    <div *ngIf="f.island.errors.required">*This field is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn search-btn btn-block search-form">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div> -->
+    <div *ngIf="isList">
+
+        <div class="container">
+            <div class="zoom1">
+                <div *ngFor="let item of propertyList;let i=index;">
+                    <a [routerLink]="['/packagedetails', item.property_id]">
+                        <div class="">
+                            <div class="col-md-4">
+                                <div class="lightbg">
+                                    <div class="">
+                                        <div *ngIf="item.offers" class="offerbadge">
+                                            <img class="img-responsive" alt="On offer"
+                                                src="../../assets/images/ribbon.svg">
+                                            <div class="offer-inner">Offer</div>
+                                        </div>
+                                        <div class="stay-pak">
+                                            <img class="img-responsive" src="{{thumbpath}}{{item.property_url[0]}}"
+                                                style="height: 200px; width: 300px;">
+                                            <!-- <div class="out-border"><a>Package : {{item.property_type_name}}</a>
+                                                
+                                                </div> -->
+                                        </div>
+
+                                    </div>
+                                    <div class="caption">
+                                        <div>
+                                            <span>
+                                                <div class="hei">
+                                                    <h3>{{item.property_name}}</h3>
+                                                </div>
+
+
+                                                <ngx-stars [readonly]="true" [size]="1" [color]="'#ffd700'"
+                                                    [initialStars]="item.average_rating" class="rating-header">
+                                                </ngx-stars>
+                                            </span>
+                                            <div *ngIf="item.property_address.length>40" class="att-detail2">
+                                                <p>{{item.property_address | slice:0:39 }}...</p>
+                                            </div>
+                                            <div *ngIf=" item.property_address.length<40" class="att-detail2">
+                                                <p>
+
+                                                    {{item.property_address}}
+                                                </p>
+                                            </div>
+
+                                            <!-- <button type="button" class="btn btn-primary" data-toggle="collapse"
+                                            data-target="#collapseDetail" aria-expanded="false">Book Room</button> -->
+
+                                            <!-- <button type="button" class="btn detail-btn" data-toggle="modal"
+                                            data-target="#viewmodal">View Details</button> -->
+
+                                            <!-- <span class="start">Starting Price is <span class="startprice">₹1810</span></span> -->
+                                            <div style="height: 30px;">
+                                                <span *ngIf="item.base_fare!='NA'" class="start">Starting from <span
+                                                        class="startprice">₹{{item.base_fare}}</span></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="collapse" id="collapseDetail">
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- <div *ngIf="isResult">
+            <div *ngFor="let prop  of propList;let p=index;">
+                <div class="container zoom1">
+                        <a [routerLink]="['/packagedetails', prop.property_id]">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="lightbg">
+                                <div class="col-md-3">
+                                    <img class="img-responsive img-rounded" src="{{imageUrl}}{{prop.property_img_url}}">
+    
+                                </div>
+                                <div class=" col-md-9">
+                                    <div>
+                                        
+                                            <h3>{{prop.property_name}}</h3>
+                                       
+                                      
+                                        <p>{{prop.property_address}}
+                                        </p>
+                                       
+    
+                                        <div id="viewdetails{{p}}" class="modal fade bs-example-modal-sm" tabindex="-1"
+                                            role="dialog" aria-labelledby="mySmallModalLabel">
+                                            <div class="modal-dialog modal-sm" role="document">
+                                                <div class="modal-content">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                    <h4>Instructions</h4>
+                                                    <p>Lorem Ipsum has been the industry's standard dummy text ever since
+                                                        the
+                                                        1500s,
+                                                        when an unknown printer took a galley of type and scrambled it to
+                                                        make a
+                                                        type specimen book. Lorem Ipsum has been the industry's standard
+                                                        dummy
+                                                        text
+                                                        ever since the 1500s, when an unknown printer took a galley of type
+                                                        and
+                                                        scrambled it to make a type specimen book.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+    
+                                    <div class="collapse" id="collapseDetails{{p}}">
+                                        <form class="roomtype" [formGroup]="roomdetailsForm" (ngSubmit)="roomSubmit()">
+                                            
+                                            <div class="row roompdng">
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label for="inputPassword" class="col-sm-5 control-label">Room
+                                                            Type</label>
+                                                        <div class="col-sm-7 drop">
+                                                            <ng-select formControlName="roomtype" [items]="islandInfo"
+                                                                class="selectHeight search-form" bindLabel="island_name"
+                                                                bindValue="island_id" placeholder="Select room"
+                                                                style="min-height: 35px;">
+                                                            </ng-select>
+                                                            <div *ngIf="isSubmit && g.roomtype.errors"
+                                                                class="invalid-feedback">
+                                                                <div *ngIf="g.roomtype.errors.required">*This field is
+                                                                    required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="inputPassword" class="col-sm-7 control-label">No of
+                                                            Adults</label>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" name="adultamount"
+                                                                class="form-control search-form1"
+                                                                formControlName="adultAmt">
+                                                            <div *ngIf="isSubmit && g.adultAmt.errors"
+                                                                class="invalid-feedback">
+                                                                <div *ngIf="g.adultAmt.errors.required">*This field is
+                                                                    required</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="inputPassword" class="col-sm-7 control-label">No of
+                                                            Child</label>
+                                                        <div class="col-sm-5">
+                                                            <input type="text" name="childamount"
+                                                                class="form-control search-form1"
+                                                                formControlName="childAmt">
+                                                            <div *ngIf="isSubmit && g.childAmt.errors"
+                                                                class="invalid-feedback">
+                                                                <div *ngIf="g.childAmt.errors.required">*This field is
+                                                                    required</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row roompdng">
+                                                <div class="col-md-4">
+    
+                                                    <div class="form-group">
+                                                        <label for="inputPassword" class="col-sm-5 control-label">Single
+                                                            Room</label>
+                                                        <div class="col-sm-7">
+                                                            <div class="setleft1"><i class="fa fa-minus-circle"
+                                                                    (click)=removeSingle()></i>
+                                                            </div>
+                                                            <div class="fncl">
+                                                              
+                                                                {{singleroom}}
+                                                            </div>
+                                                            <div class="setRight1"><i class="fa fa-plus-circle"
+                                                                    (click)=addSingle()></i></div>
+                                                        </div>
+                                                    </div>
+    
+                                                </div>
+                                                <div class="col-md-4">
+    
+                                                    <div class="form-group">
+                                                        <label for="inputPassword" class="col-sm-5 control-label">Double
+                                                            Room</label>
+                                                        <div class="col-sm-7">
+                                                            <div class="setleft1"><i class="fa fa-minus-circle"
+                                                                    (click)=removeDouble()></i>
+                                                            </div>
+                                                            <div class="fncl">
+                                                              
+                                                                {{doubleroom}}
+                                                            </div>
+                                                            <div class="setRight1"><i class="fa fa-plus-circle"
+                                                                    (click)=addDouble()></i></div>
+                                                        </div>
+                                                    </div>
+    
+    
+                                                </div>
+    
+                                                <div class="col-md-4">
+    
+                                                    <div class="form-group">
+                                                        <label for="inputPassword" class="col-sm-5 control-label">Extra
+                                                            Room</label>
+                                                        <div class="col-sm-7">
+                                                            <div class="setleft1"><i class="fa fa-minus-circle"
+                                                                    (click)=removeExtra()></i>
+                                                            </div>
+                                                            <div class="fncl">
+                                                              
+                                                                {{extraroom}}
+                                                            </div>
+                                                            <div class="setRight1"><i class="fa fa-plus-circle"
+                                                                    (click)=addExtra()></i></div>
+                                                        </div>
+                                                    </div>
+    
+                                                </div>
+    
+                                            </div>
+    
+    
+                                          
+    
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button type="submit" style="margin-right: 20px;"
+                                                        class="btn btn-default pull-right">Book Now</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+    
+                                </div>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                </div>
+            </div>
+        </div> -->
+    <div class="row">
+
+    </div>
+</div>
+
+<div class="clearfix"></div><br>

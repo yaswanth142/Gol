@@ -1,0 +1,113 @@
+<div id="myCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../assets/images/innerpagee.jpg" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption carousel-captionn">
+          <h1>Booking Details</h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="clearfix"></div><br><br>
+
+
+
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="page-header">
+          Booking Details
+
+        </h2>
+      </div><!-- /.col -->
+    </div>
+    <!-- info row -->
+    <div class="row invoice-info">
+
+      <div class="col-sm-6 invoice-col">
+
+
+        <b>Name:</b> {{fullname}}<br>
+        <b>Email:</b> {{email}}<br>
+        <b>Mobile:</b> {{mobileno}}<br>
+        <b>Travel Status(Primary Member):</b> {{entryPermitStatus}}<br>
+        <b>Nationality:</b> {{nationality}}<br>
+        <b>Passport No:</b>{{p_passport}}<br>
+        <b>Food Preference:</b> {{foodpreference}}<br>
+        <b>Gender:</b> {{gender}}<br>
+        <b>Guardian:</b> {{guardian}}<br>
+        <b>Age:</b> {{p_age}}<br>
+      </div><!-- /.col -->
+      <div class="col-sm-6 invoice-col">
+
+        <span *ngIf="isPackage"><b>Package Name:</b> {{p_name}}<br></span>
+        <span *ngIf="!isPackage"><b>Property Name:</b> {{p_name}}<br></span>
+        <b>Travel Status:</b> {{b_entryPermitStatus}}<br>
+        <b>Booking Status:</b> {{b_status}}<br>
+        <b>Date of Booking :</b> {{b_date | date:'dd MMM yyyy'}}<br>
+        <span *ngIf="isPackage"><b>Departure Date:</b> {{s_date | date:'dd MMM yyyy'}}<br></span>
+        <span *ngIf="isPackage"><b>Arrival Date:</b> {{e_date | date:'dd MMM yyyy'}}<br></span>
+        <span *ngIf="!isPackage"> <b>Check-in:</b>{{ s_date | date:'dd MMM yyyy'}}<br></span>
+        <span *ngIf="!isPackage"><b>Check-out:</b> {{e_date | date:'dd MMM yyyy'}}<br></span>
+        <span><b>Room/Class Type:</b> <span *ngFor="let items of bookingClass"><br>{{items.package_class}}</span><br></span>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+    <hr>
+
+
+
+
+    <div class="clearfix"></div><br>
+    <p *ngIf="secondaryDetails.length" class="formp"><b>Secondary Member Details:</b> </p>
+
+    <div *ngFor="let data of secondaryDetails; let i=index;">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="reserbg">
+            <div class="col-md-12">
+              <div class="clearfix"></div>
+              <div class="col-md-4">
+                <div><b>Name :</b> {{data.individual_booking_name}}</div>
+                <div><b>Gender :</b> {{data.ibd_gender}}</div>
+              </div>
+              <div class="col-md-4">
+                <div><b>Travel Status :</b> {{data.entry_permit_status}}</div>
+                <!-- <div><b>DOB</b> 10/05/1984</div> -->
+                <div><b>Nationality :</b> {{data.ibd_nationality}}</div>
+              </div>
+              <div class="col-md-4">
+
+                <div><b>Food Preference :</b> {{data.ibd_food_pref}}</div>
+                <div><b>Age :</b> {{data.ibd_age}}</div>
+              </div>
+              <div class="col-md-4">
+
+                <div><b>Passport No :</b> {{data.ibd_passport}}</div>
+               </div>
+
+            </div>
+          </div>
+        </div>
+      </div><br>
+    </div>
+    <!-- 
+            <div class="row">
+              <div class="col-md-12">
+                <div class="pull-right">
+                  <button type="submit" class="btn btn-primary">Back</button>
+                  <button type="submit" class="btn btn-default">Find Another Reservation  </button>
+                </div>
+              </div>
+            </div> -->
+
+
+  </div>
+
+  <div class="clearfix"></div><br>
+</div>

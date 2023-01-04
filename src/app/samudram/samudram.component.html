@@ -1,0 +1,361 @@
+<div id="myCarousel" class="carousel slide">
+</div>
+<div class="carousel-inner">
+    <div class="item active">
+        <img class="" src="../../assets/images/package.jpg">
+        <div class="container">
+            <div class="carousel-caption carousel-captionn">
+                <h1>{{pkgName}}</h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <h1 class="hiddenn">{{pkgName}}</h1>
+    </div>
+
+    <div class="row tppdng">
+        <div class="col-md-12">
+
+            <div id="no-more-tables">
+                <table *ngIf="!isLand" class="col-md-12 table-bordered table-striped table-condensed cf">
+                    <thead class="cf">
+                        <tr class="cff">
+                            <th>S/N</th>
+                            <th class="numeric">Ship</th>
+                            <th>Departure Location</th>
+                            <th>Departure Date</th>
+                            <th class="numeric">Arrival Location</th>
+                            <th class="numeric">Arrival Date</th>
+                            <th class="numeric">Islands</th>
+                            <th>Class Info</th>
+                            <th>Availability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of availableDetails;let s=index;">
+                            <td data-title="S/N">{{s+1}}</td>
+                            <td data-title="Ship" class="numeric">{{item.ship_name}}</td>
+                            <td data-title="Departure Location">{{item.departure_location}}</td>
+                            <td data-title="Departure Date" class="numeric">
+                                {{item.ship_travel_dept_date| date: 'dd/MM/yyyy'}}<br>
+                                {{item.ship_travel_dept_time}}
+                            </td>
+                            <td data-title="Arrival Location">{{item.arrival_location}}</td>
+                            <td data-title="Arrival Date">{{item.ship_travel_arr_date| date: 'dd/MM/yyyy'}}<br>
+                                {{item.ship_travel_arrival_time}}</td>
+                            <td data-title="Islands" class="numeric">
+                                <div>
+                                    <span
+                                        *ngFor="let sim of item.island_list;let osd=index;let isLast=last">{{sim.island_name}}
+                                        {{isLast?'':'-'}}
+                                    </span></div>
+                            </td>
+                            <!-- <td *ngIf="pkgName=='Samudram' && item.isBook"><a [routerLink]="['/info', item.ship_travel_id]">Book Now</a></td>
+                                    <td *ngIf="pkgName!='Samudram' || !item.isBook">Not Available</td> -->
+
+
+                            <td data-title=" Class Info" style="text-align: center;"><i class="fa fa-eye"
+                                    aria-hidden="true" style="color: #337ab7;cursor:pointer; text-align: center;"
+                                    (click)="showClassInfo(item.ship_name,item.package_class)" data-toggle="modal"
+                                    data-target="#showClassData"></i>&nbsp;&nbsp;</td>
+                            <td *ngIf="item.isBook && item.remaining_count">
+                                <!-- <a *ngIf="pkgName!='Swaying Palm'" [routerLink]="['/info', item.ship_travel_id]" class="book-tab">Book Now</a>
+                                                <a *ngIf="pkgName=='Swaying Palm'" (click)=showMessage() class="book-tab">Book Now</a> -->
+                                <a [routerLink]="['/info', item.ship_travel_id]" class="book-tab">Book Now</a>
+
+                            </td>
+                            <td *ngIf="!item.isBook || !item.remaining_count" style="width: 180px;">Not Available</td>
+                            <!-- <td *ngIf="!item.remaining_count" style="width: 180px;">Not Available</td> -->
+
+                        </tr>
+                        
+                        
+
+                        <!-- <tr *ngIf="!availableDetails?.length">
+                            <td colspan="9"> <h3 style="text-align: center;">Please come back soon for package details.</h3></td>
+                           </tr> -->
+
+
+                </tbody>
+                
+                   
+                </table>
+
+
+                <table *ngIf="isLand" class="col-md-12 table-bordered table-striped table-condensed cf">
+                    <thead class="cf">
+                        <tr class="cff">
+                            <th>S/N</th>
+                            <th class="numeric">Property</th>
+                            <!-- <th>Departure Location</th> -->
+                            <th>Departure Date</th>
+                            <!-- <th class="numeric">Arrival Location</th> -->
+                            <th class="numeric">Arrival Date</th>
+                            <th class="numeric">Island</th>
+                            <!-- <th>Class Info</th> -->
+                            <th>Availability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of availableDetails;let s=index;">
+                            <td data-title="S/N">{{s+1}}</td>
+                            <td data-title="Property" class="numeric">{{item.property_name}}</td>
+                            <!-- <td data-title="Departure Location">{{item.departure_location}}</td> -->
+                            <td data-title="Departure Date" class="numeric">
+                                {{item.ship_travel_dept_date| date: 'dd/MM/yyyy'}}<br>
+                                {{item.ship_travel_dept_time}}
+                            </td>
+                            <!-- <td data-title="Arrival Location">{{item.arrival_location}}</td> -->
+                            <td data-title="Arrival Date">{{item.ship_travel_arr_date| date: 'dd/MM/yyyy'}}<br>
+                                {{item.ship_travel_arrival_time}}</td>
+                            <td data-title="Island" class="numeric">
+                                {{item.island_name}}
+                                <!-- <div>
+                                    <span
+                                        *ngFor="let sim of item.island_list;let osd=index;let isLast=last">{{sim.island_name}}
+                                        {{isLast?'':'-'}}
+                                    </span></div> -->
+                            </td>
+                            <!-- <td *ngIf="pkgName=='Samudram' && item.isBook"><a [routerLink]="['/info', item.ship_travel_id]">Book Now</a></td>
+                                    <td *ngIf="pkgName!='Samudram' || !item.isBook">Not Available</td> -->
+
+
+                            <!-- <td data-title=" Class Info" style="text-align: center;"><i class="fa fa-eye"
+                                    aria-hidden="true" style="color: #337ab7;cursor:pointer; text-align: center;"
+                                    (click)="showClassInfo(item.ship_name,item.package_class)" data-toggle="modal"
+                                    data-target="#showClassData"></i>&nbsp;&nbsp;</td> -->
+                            <td *ngIf="item.isBook && item.remaining_count">
+                                <!-- <a *ngIf="pkgName!='Swaying Palm'" [routerLink]="['/info', item.ship_travel_id]" class="book-tab">Book Now</a>
+                                                <a *ngIf="pkgName=='Swaying Palm'" (click)=showMessage() class="book-tab">Book Now</a> -->
+                                <a [routerLink]="['/info', item.ship_travel_id]" class="book-tab">Book Now</a>
+
+                            </td>
+                            <td *ngIf="!item.isBook || !item.remaining_count" style="width: 180px;">Not Available</td>
+                            <!-- <td *ngIf="!item.remaining_count" style="width: 180px;">Not Available</td> -->
+
+                        </tr>
+                        
+                        
+
+                        <!-- <tr *ngIf="!availableDetails?.length">
+                            <td colspan="9"> <h3 style="text-align: center;">Please come back soon for package details.</h3></td>
+                           </tr> -->
+
+
+                </tbody>
+                
+                   
+                </table>
+                <div *ngIf="!availableDetails?.length" class="alert-table">
+                            
+                        <h3 style="text-align: center;">Please come back soon for package details.</h3>
+                    </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- <p>Lakshadweep Samudram is a Five-day cruise to visit the islands of Kavaratti, Kalpeni and Minicoy by
+                    ship- M.V Kavaratti. The island tour is organized during the day with lunch and refreshments ashore.
+                    Nights are spent on board the ship. M.V Kavaratti has 180 Diamond class accommodations. Swimming,
+                    snorkeling and other water sports are arranged during the day' tour. Children from 1 year and above
+                    up to 10 years will be treated as child.</p>
+                <p>MV Kavaratti. The ships have cafeteria, snack bars, doctor on call, entertainments and upper-deck
+                    promenade. Ship facilities include three independent galleys, halls, recreation place with a
+                    swimming pool and a helipad. While planning your travel itinerary please provide a day at Kochi,
+                    both one way to Lakshadweep and on the way back. Ship programmes/Itineraries are subject to change
+                    without notice due to ships arrival / departure or other unforeseen reasons.</p> -->
+            <!-- <div *ngIf="isSamudram">
+                            <h2>Samudram</h2> 
+                            <p>
+                                M.V.Kavaratti Ship cruises through 3 islands over 5 days in this luxurious Lakshadweep Samudram Package. While the nights are spent on board the ship, island tour is organised during the day which includes lunch and refreshments – A unique experience indeed! Swimming, snorkeling and other water sports are arranged during the island tours. Children in the age group of 1 to 10 will be considered as child.<br>
+                                
+                                M.V.Kavaratii hasd 150 Diamond Class accommodations.
+                                
+                                The cruise starts from Kochi and travels through Minicoy, Kavaratti and Kalpeni islands. Boarding point in Kochi is Ground Floor, Lakshadweep Wharf near FCI Godown (Food Corporation of India), Indira Gandhi Road, Wellington Island, Kochi. Boarding time is between 09.00 and 10.00 hrs. (Exact time of travel will be announced only one day prior to travel).</p>
+                               <div class="static-data">
+                                <h4>Day 1: Depart from Kochi (Sequence of island may differ according to voyage schedule)</h4>
+                                
+                                    <ul>
+                                        <li>On board lunch will be provided around 15.00 hrs. and there will be evening tea and dinner.</li>
+                                            
+                                    </ul>  
+                                
+            
+                                <h4>Day 2: Minicoy Island</h4>
+                                <ul>
+                                    <li>Morning tea and breakfast on board the ship.</li>
+                                    <li>Departure from ship is at 08.00 hrs with arrival at Mincoy Island at around 09.45 hrs.</li>
+                                    <li>Welcome drink – Light House visit – Sea bath – Kayaking - on payment scuba dive – Lunch - visit village local residential area – Evening tea.</li>
+                                    <li>Departure to ship 16.00 hrs - arrival at 17.00 hrs – Dinner.</li>
+                                    
+                                        
+                                </ul>  
+                                
+            
+                                <h4>Day 3: Kavaratti Island</h4>
+                                <ul>
+                                 <li>Morning tea and breakfast on board the ship.</li>
+                                 <li>Departure from ship is at 08.00 hrs, with arrival at Kavaratti Island at around 08.45 hrs</li>
+                                 <li>Welcome drink – glass bottomed boat – Sea bath – Kayaking – scuba dive and snorkeling on payment – Lunch museum – aquarium – Evening tea.</li>
+                                 <li>Departure to ship 17.00 hrs. - arrival at 17.30 hrs – Dinner.</li>
+                                </ul>
+                                
+            
+                                <h4>Day 4: Kalpeni</h4>
+                                <ul>
+                                    <li>Morning tea and breakfast on board the ship.</li>
+                                    <li>Departure from ship is at 07.45 hrs, with arrival at Kalpeni Island at around 08.00 hrs.</li>
+                                    <li>Welcome drink – glass bottomed boat – Sea bath – Kayaking – and snorkeling – Lunch Folk dance – sightseeing – Evening tea.</li>
+                                    <li>Departure to ship 17.30 hrs. – Dinner.</li>
+                                </ul>
+                               
+            
+                                <h4>Day 5: Kochi</h4>
+                                <ul>
+                                    <li>Morning tea and breakfast on board the ship and leave ship at 11.00 hrs.</li>
+                                </ul>
+                            </div>
+                            </div> -->
+            <!-- <div *ngIf="isSilver">
+                                <h2>Silver Sand / One Island Tourist Package</h2> 
+                                <p>This is a one day excursion package to any one of the islands of Kadmat, Kalpeni, Kavaratti or Minicoy. The ship departs from Mangalore/Beypore (Calicut) ports to reach island by morning. The entire day is spent of various water sport activities like glass bottom boat trips, snorkeling, kayaking etc. Ship departs in the evening and night is spent on board Semi Sleeper push back seated AC hall.</p>
+                                <div class="static-data">
+                                    <strong>Day 1:</strong> Guests need to report at the departure port by 10.00 hrs. There will be 30 minutes check in process. Lunch will be provided on board the ship, if the ship leaves before 12.00 noon.<br>
+            
+                                    <strong>Day 2:</strong> After breakfast on board the ship, guests will be taken to the island by a transfer boat operated by the SPORTS authorities. This is a 30 minute transfer. There will be welcome drink at the island which will be followed by various water sports. Lunch will be provided around 14.00 hrs. Guests are at will to relax on the white sandy beach thereafter. After evening tea, guests are taken back to the ship by around 18.00 hrs.<br>
+                                    
+                                    <strong>Day 3:</strong> At mainland (Mangalore/Beypore) reaching at around 10.00 hrs. 
+                                    <h4>Package includes the following:</h4>
+                                  <ul>
+                                      <li>1. Semi sleeper accommodation in AC Hall</li>
+                                      <li>2. All 3 meals in a day and morning / evening tea or coffee.</li>
+                                      <li>3. Welcome drink on island</li>
+                                      <li>4. 1 day sightseeing</li>
+                                      <li>5. Glass bottom boat ride and kayaking (One ride)</li>
+                                      <li>6. Entry permit and heritage fee</li>
+                                      <li>7. All Government taxes as applicable.</li>
+                                  </ul>
+                                  <strong>Note:</strong> Scuba diving is not included in the standard package. However, if you are interested, you are requested to book in advance separately.
+            
+                                  <h4>Activities available are as under: (All islands may not provide all of these)</h4>
+                                  <ul>
+                                    <li>1. Glassbottom boat ride</li>
+                                    <li>2. Kayaking</li>
+                                    <li>3. Folk dance</li>
+                                    <li>4. Visit to fisheries museum</li>
+                                    <li>5. Snorkeling</li>
+                                    <li>6. Light house visit</li>
+                                    <li>7. Village visit</li>
+                                    </ul>
+                                  
+                                     
+                                </div>
+                            </div> -->
+            <!-- <div *ngIf=isSwaying>
+                                    <h2>Swaying Palm</h2>
+                                    <p>This is a land package for 5 nights in Minicoy Island and 2 nights on board the ship and includes 3 all day meals starting with lunch on departure day. The package includes First Class ship (Twin bed cabins) transfer on twin sharing basis from</p>
+                                    <p>Kochi to Minicoy and back. Welcome drink on arrival at Minicoy Island – Standard AC beach cottage on twin sharing basis – Entry permit and heritage fee – all applicable taxes.</p>
+                                    <p>Various water sport activities are available on the resort and water sport staff will be more than happy to help you. You will be experiencing one of the most memorable holidays of your life in these turquoise coral beaches.</p>
+                            </div> -->
+            <!-- <div *ngIf="isOther"> -->
+            <div>
+                <p style="text-align: justify;" [innerHTML]=shipDesc></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="showClassData" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="color:  black;">{{shipName}}</h5>
+                <button type="button" class="close close1" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p style="color: black">Package Class Details</p>
+
+                        <div id="no-more-tables">
+                            <table class="col-md-12 table-bordered table-striped table-condensed cf">
+                                <thead class="cf">
+                                    <tr class="cff">
+                                        <th>Package Class</th>
+                                        <th>Adult/Child</th>
+                                        <th class="numeric">Fare</th>
+                                        <th class="numeric">GST </th>
+                                        <th class="numeric">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let detail of packageClass;let f=index;">
+
+                                        <td data-title="Package Class" class="numeric">{{detail.package_class}}</td>
+                                        <td data-title="Adult/Child">Adult<br>Child</td>
+                                        <td data-title="Fare" class="fare">
+                                            <span>
+                                                <i class="fa fa-inr" aria-hidden="true"></i> {{detail.spcm_adult_fare}}
+                                            </span>
+
+                                            <span>
+                                                <i class="fa fa-inr" aria-hidden="true"></i> {{detail.spcm_child_fare}}
+                                            </span>
+
+
+                                        </td>
+
+                                        <td data-title="GST" class="faregst">
+                                            <div *ngIf="detail.adultgstAmount!=0">
+                                                 <span><i class="fa fa-inr" aria-hidden="true"></i>
+                                                    {{detail.adultgstAmount}}</span>
+                                            </div>
+                                            <div *ngIf="detail.adultgstAmount==0">
+                                                NA<br>
+                                            </div>
+                                            <div *ngIf="detail.childgstAmount!=0">
+                                                <i class="fa fa-inr" aria-hidden="true"></i>
+                                                    {{detail.childgstAmount}}
+                                            </div>
+                                            <div *ngIf="detail.childgstAmount==0">
+                                                NA<br>
+                                            </div>
+                                        </td>
+                                        <td data-title="Total">
+                                            <i class="fa fa-inr" aria-hidden="true"></i>
+                                            {{detail.totalAdultAmount}}<br><i class="fa fa-inr" aria-hidden="true"></i>
+                                            {{detail.totalChildAmount}}
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a type="button" class="book-tab" data-dismiss="modal">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div><br>
